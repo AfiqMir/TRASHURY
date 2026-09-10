@@ -18,7 +18,7 @@
 
 ## Jenis Produk
 
-Aplikasi Web (Progressive Web App/PWA) — dapat diinstal seperti aplikasi desktop tanpa proses distribusi lewat app store, sekaligus mendukung kemampuan bekerja pada kondisi konektivitas internet terbatas.
+Aplikasi desktop dengan database lokal — dapat digunakan tanpa ketergantungan internet penuh, sekaligus mendukung sinkronisasi data ke server saat koneksi tersedia.
 
 ## Latar Belakang & Permasalahan
 
@@ -31,7 +31,7 @@ Bagaimana merancang sistem pencatatan bank sampah digital yang (1) tetap dapat d
 
 TRASHURY mengintegrasikan tiga teknologi pada titik implementasi yang saling melengkapi:
 
-- **Jaringan Komputer** — Transaksi setoran tetap dapat dicatat saat koneksi internet terbatas melalui penyimpanan lokal (IndexedDB) di sisi klien, yang kemudian tersinkronisasi otomatis ke server saat koneksi tersedia (*queue-and-replay*).
+- **Jaringan Komputer** — Transaksi setoran tetap dapat dicatat saat koneksi internet terbatas melalui penyimpanan lokal pada aplikasi desktop, yang kemudian tersinkronisasi otomatis ke server saat koneksi tersedia (*queue-and-replay*).
 - **Kecerdasan Buatan** — Model *computer vision* berbasis *transfer learning* membantu petugas mengklasifikasikan jenis sampah dari foto, sekaligus menghitung estimasi dampak lingkungan (CO2e) dari data setoran menggunakan acuan faktor emisi standar (IPCC Guidelines).
 - **Komputasi Awan** — Basis data, API backend, dan dasbor dihosting di Azure sebagai sumber data tunggal dari seluruh transaksi, sekaligus menjadi media *showcase* produk.
 

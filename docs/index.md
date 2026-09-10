@@ -47,3 +47,83 @@ Pengembangan diprioritaskan pada fitur inti (MVP): pencatatan transaksi *offline
 
 **Diferensiasi TRASHURY:** kombinasi *offline-first* + klasifikasi AI + pelaporan CO2e otomatis dalam satu produk yang dirancang khusus untuk skala bank sampah RW/kalurahan — belum digarap bersamaan oleh kompetitor manapun.
 
+---
+
+## Metodologi SDLC
+
+### Metodologi yang Digunakan
+
+**Agile**
+
+### Alasan Pemilihan Metodologi
+
+Kami memilih metodologi Agile karena proyek TRASHURY dikembangkan dalam kurun waktu terbatas (1 semester) dengan kemungkinan requirement yang masih bisa berubah seiring proses riset dan feedback dari asisten/dosen selama pengembangan berlangsung. Agile memungkinkan pengembangan bertahap melalui beberapa iterasi, dengan produk fungsional yang dapat diuji dan dievaluasi sejak tahap awal, bukan menunggu seluruh fitur selesai di akhir seperti model Waterfall.
+
+Hal ini penting karena kelompok kami membagi fitur menjadi fitur inti (MVP) dan fitur pengembangan lanjutan (*stretch goal*), sehingga pendekatan iteratif Agile lebih sesuai untuk mengakomodasi prioritas fitur yang dapat disesuaikan tergantung sisa waktu dan sumber daya tim yang terbatas (3 anggota).
+
+## Perancangan Tahap 1–3 SDLC
+
+### A. Tujuan Produk
+
+Mengembangkan aplikasi TRASHURY sebagai solusi pencatatan dan manajemen operasional bank sampah tingkat RW/kalurahan yang ringan, mudah diadopsi, tetap dapat digunakan pada kondisi konektivitas internet terbatas, serta mampu membantu klasifikasi jenis sampah dan menghasilkan estimasi dampak lingkungan (CO2e) secara otomatis untuk mendukung kebutuhan pelaporan bank sampah kepada Dinas Lingkungan Hidup.
+
+### B. Pengguna Potensial dan Kebutuhannya
+
+#### Petugas/Pengurus Bank Sampah (Operator)
+
+Membutuhkan sistem untuk mencatat transaksi setoran dengan cepat dan akurat, tetap dapat bekerja saat koneksi internet tidak stabil, serta membantu mengklasifikasikan jenis sampah tanpa perlu menghafal seluruh kategori, terutama bagi petugas yang baru bertugas.
+
+#### Nasabah Bank Sampah (Warga)
+
+Membutuhkan kemudahan untuk mengetahui riwayat setoran dan saldo tabungan miliknya, yang disampaikan melalui operator di meja pencatatan karena nasabah tidak mengakses sistem secara langsung.
+
+#### Pengurus Pusat/Ketua Kelompok
+
+Membutuhkan sistem untuk memantau data transaksi dan estimasi dampak lingkungan (CO2e) secara terpusat, guna mendukung keperluan pelaporan berkala kepada Dinas Lingkungan Hidup.
+
+#### Dinas Lingkungan Hidup (DLH) Kabupaten
+
+Membutuhkan akses terhadap laporan bulanan berisi data transaksi dan estimasi dampak lingkungan (CO2e) dari bank sampah, untuk keperluan pemantauan dan evaluasi program pengelolaan sampah di wilayahnya.
+
+### C. Use Case Sistem
+
+| Aktor | Use case |
+|---|---|
+| Operator Bank Sampah | Kelola data nasabah; kelola kategori dan harga; catat setoran sampah; klasifikasi sampah dari foto; proses penarikan saldo; lihat buku tabungan; ekspor laporan bulanan |
+| Pengurus/Ketua | Lihat buku tabungan; lihat dashboard CO2e; ekspor laporan bulanan |
+| DLH Kabupaten | Menerima dan menggunakan laporan bulanan |
+| Nasabah | Menerima informasi riwayat setoran dan saldo melalui operator |
+
+### D. Functional Requirements
+
+| FR | Deskripsi |
+|---|---|
+| FR 1 | Sistem dapat mengelola data nasabah (tambah, ubah, hapus, dan cari). |
+| FR 2 | Sistem dapat mengelola data kategori sampah beserta harga per kilogramnya. |
+| FR 3 | Sistem dapat mencatat transaksi setoran sampah milik nasabah. |
+| FR 4 | Sistem dapat melakukan klasifikasi jenis sampah secara otomatis berbasis foto/gambar sebagai bagian dari proses pencatatan setoran. |
+| FR 5 | Sistem dapat memproses transaksi penarikan saldo tabungan nasabah. |
+| FR 6 | Sistem dapat menampilkan buku tabungan nasabah, termasuk riwayat setoran dan penarikan. |
+| FR 7 | Sistem dapat menampilkan *dashboard* estimasi pengurangan emisi karbon (CO2e). |
+| FR 8 | Sistem dapat mengekspor rekapitulasi laporan bulanan untuk diserahkan kepada DLH Kabupaten. |
+
+### E. Entity Relationship Diagram
+
+Struktur entitas utama TRASHURY terdiri atas:
+
+| Entitas | Atribut utama |
+|---|---|
+| **Nasabah** | `id_nasabah (PK)`, `nama`, `nomor_hp`, `alamat`, `total_saldo` |
+| **Operator** | `id_operator (PK)`, `nama`, `username`, `password` |
+| **Transaksi** | `id_transaksi (PK)`, `id_nasabah (FK)`, `id_operator (FK)`, `tanggal`, `jenis_transaksi`, `total_nominal`, `total_co2e` |
+| **Detail Transaksi** | `id_detail (PK)`, `id_transaksi (FK)`, `berat_kg`, `url_foto_sampah`, `subtotal_harga`, `subtotal_co2e` |
+| **Kategori Sampah** | `id_kategori (PK)`, `nama_kategori`, `harga_per_kg`, `faktor_co2e_per_kg` |
+| **Penarikan Saldo** | `id_penarikan (PK)`, `id_nasabah (FK)`, `tanggal`, `jumlah_tarik`, `saldo_sisa` |
+
+Relasi antartabel:
+
+- Satu **Nasabah** dapat memiliki banyak **Transaksi** dan banyak **Penarikan Saldo**.
+- Satu **Operator** dapat mencatat banyak **Transaksi**.
+- Satu **Transaksi** memiliki banyak **Detail Transaksi**.
+- Satu **Kategori Sampah** dapat digunakan pada banyak **Detail Transaksi**.
+

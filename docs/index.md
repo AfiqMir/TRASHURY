@@ -127,3 +127,19 @@ Relasi antartabel:
 - Satu **Transaksi** memiliki banyak **Detail Transaksi**.
 - Satu **Kategori Sampah** dapat digunakan pada banyak **Detail Transaksi**.
 
+### F. Gantt Chart Pengerjaan Proyek dalam Satu Semester
+
+Keterangan: `X` menunjukkan pertemuan ketika kegiatan dikerjakan.
+
+| Kegiatan | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12 |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| Brainstorming & Requirement Analysis | X | X |  |  |  |  |  |  |  |  |  |  |
+| Perancangan Sistem (Use Case, ERD, Wireframe) |  | X | X |  |  |  |  |  |  |  |  |  |
+| Setup Repositori Git & Project Board |  |  | X |  |  |  |  |  |  |  |  |  |
+| Pengembangan MVP: Modul Transaksi & Offline Storage |  |  |  | X | X | X |  |  |  |  |  |  |
+| Pengembangan Modul Kalkulasi CO2e & Laporan |  |  |  |  |  | X | X |  |  |  |  |  |
+| Evaluasi Tengah Semester (ATS) & Testing Awal |  |  |  |  |  |  |  | X |  |  |  |  |
+| Pengembangan Stretch Goals & Integrasi Fitur |  |  |  |  |  |  |  |  | X | X |  |  |
+| System Integration Testing (SIT) & Fix Bug |  |  |  |  |  |  |  |  |  |  | X |  |
+| Penyusunan Dokumentasi & Final Review |  |  |  |  |  |  |  |  |  |  |  | X |
+

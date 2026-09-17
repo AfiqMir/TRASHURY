@@ -127,6 +127,8 @@ Relasi antartabel:
 - Satu **Transaksi** memiliki banyak **Detail Transaksi**.
 - Satu **Kategori Sampah** dapat digunakan pada banyak **Detail Transaksi**.
 
+Diagram ERD versi lengkap tersedia sebagai berkas yang dapat disunting di [`docs/design/erd-trashury.drawio`](design/erd-trashury.drawio) (buka melalui [app.diagrams.net](https://app.diagrams.net)), sedangkan skema tabelnya dituangkan dalam DDL SQLite di [`docs/design/schema-lokal.sql`](design/schema-lokal.sql).
+
 ### F. Gantt Chart Pengerjaan Proyek dalam Satu Semester
 
 Keterangan: `X` menunjukkan pertemuan ketika kegiatan dikerjakan.
@@ -143,3 +145,11 @@ Keterangan: `X` menunjukkan pertemuan ketika kegiatan dikerjakan.
 | System Integration Testing (SIT) & Fix Bug |  |  |  |  |  |  |  |  |  |  | X |  |
 | Penyusunan Dokumentasi & Final Review |  |  |  |  |  |  |  |  |  |  |  | X |
 
+---
+
+## Dokumen Pendukung
+
+- [Dokumentasi Proyek](dokumentasi-proyek.md) — arsitektur sistem, struktur repositori, keputusan desain, alur kerja tim, dan status pekerjaan.
+- [Panduan Demo](panduan-demo.md) — naskah peragaan produk beserta persiapan dan rencana cadangan.
+- [ERD TRASHURY (.drawio)](design/erd-trashury.drawio) — diagram relasi antarentitas.
+- [Skema Database Lokal (.sql)](design/schema-lokal.sql) — DDL SQLite untuk basis data di mesin operator.

@@ -1,0 +1,625 @@
+<mxfile host="app.diagrams.net" agent="TRASHURY" type="device">
+  <diagram id="trashury-erd" name="ERD TRASHURY">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1760" pageHeight="760" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="judul" value="ERD TRASHURY — Aplikasi Kasir Bank Sampah Kalurahan" style="text;html=1;fontSize=20;fontStyle=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="40" y="10" width="900" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="nasabah" value="nasabah" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#E8F4FF;strokeColor=#3B7DD8;fontColor=#1B1B1B;" vertex="1" parent="1">
+          <mxGeometry x="40" y="70" width="320" height="186" as="geometry" />
+        </mxCell>
+        <mxCell id="nasabah-r0" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="nasabah">
+          <mxGeometry y="30" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="nasabah-r0-c0" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="nasabah-r0">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r0-c1" value="id_nasabah : TEXT (UUID)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="nasabah-r0">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r1" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="nasabah">
+          <mxGeometry y="56" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="nasabah-r1-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="nasabah-r1">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r1-c1" value="nama : TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="nasabah-r1">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="nasabah">
+          <mxGeometry y="82" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="nasabah-r2-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="nasabah-r2">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r2-c1" value="nomor_hp : TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="nasabah-r2">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r3" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="nasabah">
+          <mxGeometry y="108" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="nasabah-r3-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="nasabah-r3">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r3-c1" value="alamat : TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="nasabah-r3">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r4" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="nasabah">
+          <mxGeometry y="134" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="nasabah-r4-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="nasabah-r4">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r4-c1" value="total_saldo : INTEGER (rupiah)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="nasabah-r4">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r5" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="nasabah">
+          <mxGeometry y="160" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="nasabah-r5-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="nasabah-r5">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="nasabah-r5-c1" value="created_at / updated_at : TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="nasabah-r5">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator" value="operator" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#E8F4FF;strokeColor=#3B7DD8;fontColor=#1B1B1B;" vertex="1" parent="1">
+          <mxGeometry x="40" y="400" width="320" height="186" as="geometry" />
+        </mxCell>
+        <mxCell id="operator-r0" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="operator">
+          <mxGeometry y="30" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="operator-r0-c0" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="operator-r0">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r0-c1" value="id_operator : TEXT (UUID)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="operator-r0">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r1" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="operator">
+          <mxGeometry y="56" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="operator-r1-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="operator-r1">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r1-c1" value="nama : TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="operator-r1">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="operator">
+          <mxGeometry y="82" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="operator-r2-c0" value="U" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="operator-r2">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r2-c1" value="username : TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="operator-r2">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r3" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="operator">
+          <mxGeometry y="108" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="operator-r3-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="operator-r3">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r3-c1" value="password_hash : TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="operator-r3">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r4" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="operator">
+          <mxGeometry y="134" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="operator-r4-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="operator-r4">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r4-c1" value="peran : TEXT (operator|pengurus)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="operator-r4">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r5" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="operator">
+          <mxGeometry y="160" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="operator-r5-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="operator-r5">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="operator-r5-c1" value="created_at : TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="operator-r5">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi" value="transaksi" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#EAF7EC;strokeColor=#2E8B57;fontColor=#1B1B1B;" vertex="1" parent="1">
+          <mxGeometry x="480" y="70" width="320" height="264" as="geometry" />
+        </mxCell>
+        <mxCell id="transaksi-r0" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="transaksi">
+          <mxGeometry y="30" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="transaksi-r0-c0" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="transaksi-r0">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r0-c1" value="id_transaksi : TEXT (UUID)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r0">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r1" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="transaksi">
+          <mxGeometry y="56" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="transaksi-r1-c0" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="transaksi-r1">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r1-c1" value="id_nasabah → nasabah" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r1">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="transaksi">
+          <mxGeometry y="82" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="transaksi-r2-c0" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="transaksi-r2">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r2-c1" value="id_operator → operator" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r2">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r3" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="transaksi">
+          <mxGeometry y="108" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="transaksi-r3-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="transaksi-r3">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r3-c1" value="tanggal : TEXT (ISO-8601)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r3">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r4" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="transaksi">
+          <mxGeometry y="134" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="transaksi-r4-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="transaksi-r4">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r4-c1" value="jenis_transaksi : TEXT (setoran)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r4">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r5" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="transaksi">
+          <mxGeometry y="160" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="transaksi-r5-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="transaksi-r5">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r5-c1" value="total_nominal : INTEGER" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r5">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r6" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="transaksi">
+          <mxGeometry y="186" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="transaksi-r6-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="transaksi-r6">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r6-c1" value="total_co2e : REAL (kg CO2e)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r6">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r7" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="transaksi">
+          <mxGeometry y="212" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="transaksi-r7-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="transaksi-r7">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r7-c1" value="sync_status : TEXT (pending|synced)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r7">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r8" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="transaksi">
+          <mxGeometry y="238" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="transaksi-r8-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="transaksi-r8">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="transaksi-r8-c1" value="synced_at : TEXT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r8">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo" value="penarikan_saldo" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#EAF7EC;strokeColor=#2E8B57;fontColor=#1B1B1B;" vertex="1" parent="1">
+          <mxGeometry x="480" y="410" width="320" height="238" as="geometry" />
+        </mxCell>
+        <mxCell id="penarikan_saldo-r0" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="penarikan_saldo">
+          <mxGeometry y="30" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="penarikan_saldo-r0-c0" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="penarikan_saldo-r0">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r0-c1" value="id_penarikan : TEXT (UUID)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r0">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r1" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="penarikan_saldo">
+          <mxGeometry y="56" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="penarikan_saldo-r1-c0" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="penarikan_saldo-r1">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r1-c1" value="id_nasabah → nasabah" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r1">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="penarikan_saldo">
+          <mxGeometry y="82" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="penarikan_saldo-r2-c0" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="penarikan_saldo-r2">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r2-c1" value="id_operator → operator" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r2">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r3" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="penarikan_saldo">
+          <mxGeometry y="108" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="penarikan_saldo-r3-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="penarikan_saldo-r3">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r3-c1" value="tanggal : TEXT (ISO-8601)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r3">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r4" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="penarikan_saldo">
+          <mxGeometry y="134" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="penarikan_saldo-r4-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="penarikan_saldo-r4">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r4-c1" value="jumlah_tarik : INTEGER" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r4">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r5" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="penarikan_saldo">
+          <mxGeometry y="160" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="penarikan_saldo-r5-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="penarikan_saldo-r5">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r5-c1" value="saldo_sisa : INTEGER" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r5">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r6" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="penarikan_saldo">
+          <mxGeometry y="186" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="penarikan_saldo-r6-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="penarikan_saldo-r6">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r6-c1" value="sync_status : TEXT (pending|synced)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r6">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r7" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="penarikan_saldo">
+          <mxGeometry y="212" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="penarikan_saldo-r7-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="penarikan_saldo-r7">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="penarikan_saldo-r7-c1" value="synced_at : TEXT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r7">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi" value="detail_transaksi" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#FFF5E0;strokeColor=#D79B00;fontColor=#1B1B1B;" vertex="1" parent="1">
+          <mxGeometry x="920" y="70" width="320" height="238" as="geometry" />
+        </mxCell>
+        <mxCell id="detail_transaksi-r0" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="detail_transaksi">
+          <mxGeometry y="30" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="detail_transaksi-r0-c0" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="detail_transaksi-r0">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r0-c1" value="id_detail : TEXT (UUID)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r0">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r1" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="detail_transaksi">
+          <mxGeometry y="56" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="detail_transaksi-r1-c0" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="detail_transaksi-r1">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r1-c1" value="id_transaksi → transaksi" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r1">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="detail_transaksi">
+          <mxGeometry y="82" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="detail_transaksi-r2-c0" value="FK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="detail_transaksi-r2">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r2-c1" value="id_kategori → kategori_sampah" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r2">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r3" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="detail_transaksi">
+          <mxGeometry y="108" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="detail_transaksi-r3-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="detail_transaksi-r3">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r3-c1" value="berat_kg : REAL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r3">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r4" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="detail_transaksi">
+          <mxGeometry y="134" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="detail_transaksi-r4-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="detail_transaksi-r4">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r4-c1" value="url_foto_sampah : TEXT NULL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r4">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r5" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="detail_transaksi">
+          <mxGeometry y="160" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="detail_transaksi-r5-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="detail_transaksi-r5">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r5-c1" value="sumber_klasifikasi : TEXT (ai|manual)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r5">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r6" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="detail_transaksi">
+          <mxGeometry y="186" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="detail_transaksi-r6-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="detail_transaksi-r6">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r6-c1" value="subtotal_harga : INTEGER" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r6">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r7" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="detail_transaksi">
+          <mxGeometry y="212" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="detail_transaksi-r7-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="detail_transaksi-r7">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="detail_transaksi-r7-c1" value="subtotal_co2e : REAL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r7">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kategori_sampah" value="kategori_sampah" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#FFF5E0;strokeColor=#D79B00;fontColor=#1B1B1B;" vertex="1" parent="1">
+          <mxGeometry x="1360" y="70" width="320" height="160" as="geometry" />
+        </mxCell>
+        <mxCell id="kategori_sampah-r0" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="kategori_sampah">
+          <mxGeometry y="30" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="kategori_sampah-r0-c0" value="PK" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="kategori_sampah-r0">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kategori_sampah-r0-c1" value="id_kategori : TEXT (UUID)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="kategori_sampah-r0">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kategori_sampah-r1" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="kategori_sampah">
+          <mxGeometry y="56" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="kategori_sampah-r1-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="kategori_sampah-r1">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kategori_sampah-r1-c1" value="nama_kategori : TEXT" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="kategori_sampah-r1">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kategori_sampah-r2" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="kategori_sampah">
+          <mxGeometry y="82" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="kategori_sampah-r2-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="kategori_sampah-r2">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kategori_sampah-r2-c1" value="harga_per_kg : INTEGER" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="kategori_sampah-r2">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kategori_sampah-r3" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="kategori_sampah">
+          <mxGeometry y="108" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="kategori_sampah-r3-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="kategori_sampah-r3">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kategori_sampah-r3-c1" value="faktor_co2e_per_kg : REAL" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="kategori_sampah-r3">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kategori_sampah-r4" value="" style="shape=tableRow;horizontal=0;startSize=0;swimlaneHead=0;swimlaneBody=0;fillColor=none;collapsible=0;dropTarget=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;html=1;" vertex="1" parent="kategori_sampah">
+          <mxGeometry y="134" width="320" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="kategori_sampah-r4-c0" value="" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;overflow=hidden;html=1;align=center;fontSize=10;fontColor=#7A4B00;" vertex="1" parent="kategori_sampah-r4">
+          <mxGeometry x="0" width="44" height="26" as="geometry">
+            <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="kategori_sampah-r4-c1" value="aktif : INTEGER (0/1)" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="kategori_sampah-r4">
+          <mxGeometry x="44" width="276" height="26" as="geometry">
+            <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e0" value="1 : N" style="html=1;fontSize=11;rounded=0;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;strokeColor=#4D4D4D;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;jumpSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="nasabah-r0" target="transaksi-r1">
+          <mxGeometry relative="1" as="geometry" x="0.75">
+            <Array as="points">
+              <mxPoint x="420" y="113" />
+              <mxPoint x="420" y="139" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e1" value="1 : N" style="html=1;fontSize=11;rounded=0;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;strokeColor=#4D4D4D;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;jumpSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="operator-r0" target="transaksi-r2">
+          <mxGeometry relative="1" as="geometry" x="0.75">
+            <Array as="points">
+              <mxPoint x="400" y="443" />
+              <mxPoint x="400" y="165" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e2" value="1 : N" style="html=1;fontSize=11;rounded=0;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;strokeColor=#4D4D4D;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;jumpSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="nasabah-r0" target="penarikan_saldo-r1">
+          <mxGeometry relative="1" as="geometry" x="0.75">
+            <Array as="points">
+              <mxPoint x="420" y="113" />
+              <mxPoint x="420" y="479" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e3" value="1 : N" style="html=1;fontSize=11;rounded=0;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;strokeColor=#4D4D4D;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;jumpSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="operator-r0" target="penarikan_saldo-r2">
+          <mxGeometry relative="1" as="geometry" x="0.75">
+            <Array as="points">
+              <mxPoint x="400" y="443" />
+              <mxPoint x="400" y="505" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e4" value="1 : N" style="html=1;fontSize=11;rounded=0;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;strokeColor=#4D4D4D;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;jumpSize=10;labelBackgroundColor=#FFFFFF;exitX=1;exitY=0.5;entryX=0;entryY=0.5;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="transaksi-r0" target="detail_transaksi-r1">
+          <mxGeometry relative="1" as="geometry" x="0.75">
+            <Array as="points">
+              <mxPoint x="860" y="113" />
+              <mxPoint x="860" y="139" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="e5" value="1 : N" style="html=1;fontSize=11;rounded=0;endArrow=ERmany;startArrow=ERone;endFill=0;startFill=0;strokeColor=#4D4D4D;strokeWidth=1.5;edgeStyle=orthogonalEdgeStyle;jumpStyle=arc;jumpSize=10;labelBackgroundColor=#FFFFFF;exitX=0;exitY=0.5;entryX=1;entryY=0.5;exitDx=0;exitDy=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="kategori_sampah-r0" target="detail_transaksi-r2">
+          <mxGeometry relative="1" as="geometry" x="0.75">
+            <Array as="points">
+              <mxPoint x="1300" y="113" />
+              <mxPoint x="1300" y="165" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

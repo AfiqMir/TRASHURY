@@ -51,8 +51,12 @@ cp backend/.env.example backend/.env
 npm run dev:api
 ```
 
-Dokumentasi endpoint terbuka di `http://localhost:3000/docs`. Seluruh pengujian
-dijalankan dengan `npm test` dan tidak membutuhkan PostgreSQL terpasang.
+Dokumentasi endpoint terbuka di `http://localhost:3000/docs`.
+
+Pengujian dijalankan dua lapis. `npm test` memanggil aplikasi di dalam proses
+dan tidak membutuhkan PostgreSQL terpasang. `npm run smoke` menjalankan server
+sungguhan lewat HTTP terhadap PostgreSQL sungguhan, dan itulah yang menangkap
+keadaan berebut antarpermintaan.
 
 ## Mencoba skema database
 

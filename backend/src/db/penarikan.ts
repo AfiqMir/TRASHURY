@@ -41,15 +41,15 @@ export async function simpanPenarikan(
   },
 ): Promise<HasilSimpanPenarikan> {
   return basis.dalamTransaksi(async (trx) => {
-    const tersimpan = await ambilPenarikan(trx, data.id_penarikan);
-    if (tersimpan) return { keadaan: 'sudah_ada', penarikan: tersimpan };
-
     const nasabah = await trx.kueri<{ total_saldo: number }>(
       'SELECT total_saldo::int AS total_saldo FROM nasabah WHERE id_nasabah = $1 FOR UPDATE',
       [data.id_nasabah],
     );
     const saldo = nasabah.rows[0]?.total_saldo;
     if (saldo === undefined) return { keadaan: 'nasabah_tidak_ada' };
+
+    const tersimpan = await ambilPenarikan(trx, data.id_penarikan);
+    if (tersimpan) return { keadaan: 'sudah_ada', penarikan: tersimpan };
 
     if (!saldoMencukupi(saldo, data.jumlah_tarik)) {
       return { keadaan: 'saldo_kurang', saldoTersedia: saldo };

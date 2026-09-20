@@ -14,11 +14,11 @@
 
 ## Nama Produk
 
-**TRASHURY.** Aplikasi kasir dan manajemen database lokal berbasis desktop untuk memodernisasi operasional bank sampah kalurahan tanpa ketergantungan internet penuh.
+**TRASHURY.** Aplikasi kasir dan manajemen database lokal untuk memodernisasi operasional bank sampah kalurahan tanpa ketergantungan internet penuh.
 
 ## Jenis Produk
 
-Aplikasi desktop dengan database lokal yang dapat digunakan tanpa ketergantungan internet penuh, sekaligus mendukung sinkronisasi data ke server saat koneksi tersedia.
+Aplikasi web progresif (PWA) yang dapat dipasang pada komputer operator sehingga bekerja layaknya aplikasi desktop. Data transaksi disimpan pada basis data lokal di peramban, sehingga aplikasi tetap dapat digunakan tanpa ketergantungan internet penuh, sekaligus mendukung sinkronisasi data ke server saat koneksi tersedia.
 
 ## Latar Belakang & Permasalahan
 
@@ -31,7 +31,7 @@ Bagaimana merancang sistem pencatatan bank sampah digital yang (1) tetap dapat d
 
 TRASHURY mengintegrasikan tiga teknologi pada titik implementasi yang saling melengkapi:
 
-- **Jaringan Komputer.** Transaksi setoran tetap dapat dicatat saat koneksi internet terbatas melalui penyimpanan lokal pada aplikasi desktop, yang kemudian tersinkronisasi otomatis ke server saat koneksi tersedia (*queue-and-replay*).
+- **Jaringan Komputer.** Transaksi setoran tetap dapat dicatat saat koneksi internet terbatas melalui penyimpanan lokal pada perangkat operator, yang kemudian tersinkronisasi otomatis ke server saat koneksi tersedia (*queue-and-replay*).
 - **Kecerdasan Buatan.** Model *computer vision* berbasis *transfer learning* membantu petugas mengklasifikasikan jenis sampah dari foto, sekaligus menghitung estimasi dampak lingkungan (CO2e) dari data setoran menggunakan acuan faktor emisi standar (IPCC Guidelines).
 - **Komputasi Awan.** Basis data, API backend, dan dasbor dihosting di Azure sebagai sumber data tunggal dari seluruh transaksi, sekaligus menjadi media *showcase* produk.
 

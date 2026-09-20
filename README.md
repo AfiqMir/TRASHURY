@@ -1,7 +1,8 @@
 # TRASHURY
 
 Aplikasi kasir dan manajemen database lokal untuk memodernisasi operasional
-bank sampah kalurahan tanpa ketergantungan internet penuh.
+bank sampah kalurahan tanpa ketergantungan internet penuh. Berbentuk aplikasi
+web progresif yang dapat dipasang di komputer operator.
 
 [![CI TRASHURY](https://github.com/AfiqMir/TRASHURY/actions/workflows/main.yml/badge.svg)](https://github.com/AfiqMir/TRASHURY/actions/workflows/main.yml)
 

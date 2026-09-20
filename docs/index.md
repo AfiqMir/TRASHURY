@@ -2,9 +2,9 @@
 
 **Kelompok Keren**
 
-**Ketua Kelompok:** Wangsit Nursyahada – 24/545092/TK/60594
-**Anggota 1:** Muhammad Afiq Mirza Choiruzan – 24/537942/TK/59646
-**Anggota 2:** Bintang Daneswara – 24/541599/TK/60084
+**Ketua Kelompok:** Wangsit Nursyahada, 24/545092/TK/60594
+**Anggota 1:** Muhammad Afiq Mirza Choiruzan, 24/537942/TK/59646
+**Anggota 2:** Bintang Daneswara, 24/541599/TK/60084
 
 **Project Senior Project TI**
 
@@ -14,11 +14,11 @@
 
 ## Nama Produk
 
-**TRASHURY** — Aplikasi kasir dan manajemen database lokal berbasis desktop untuk memodernisasi operasional bank sampah kalurahan tanpa ketergantungan internet penuh.
+**TRASHURY.** Aplikasi kasir dan manajemen database lokal berbasis desktop untuk memodernisasi operasional bank sampah kalurahan tanpa ketergantungan internet penuh.
 
 ## Jenis Produk
 
-Aplikasi desktop dengan database lokal — dapat digunakan tanpa ketergantungan internet penuh, sekaligus mendukung sinkronisasi data ke server saat koneksi tersedia.
+Aplikasi desktop dengan database lokal yang dapat digunakan tanpa ketergantungan internet penuh, sekaligus mendukung sinkronisasi data ke server saat koneksi tersedia.
 
 ## Latar Belakang & Permasalahan
 
@@ -31,9 +31,9 @@ Bagaimana merancang sistem pencatatan bank sampah digital yang (1) tetap dapat d
 
 TRASHURY mengintegrasikan tiga teknologi pada titik implementasi yang saling melengkapi:
 
-- **Jaringan Komputer** — Transaksi setoran tetap dapat dicatat saat koneksi internet terbatas melalui penyimpanan lokal pada aplikasi desktop, yang kemudian tersinkronisasi otomatis ke server saat koneksi tersedia (*queue-and-replay*).
-- **Kecerdasan Buatan** — Model *computer vision* berbasis *transfer learning* membantu petugas mengklasifikasikan jenis sampah dari foto, sekaligus menghitung estimasi dampak lingkungan (CO2e) dari data setoran menggunakan acuan faktor emisi standar (IPCC Guidelines).
-- **Komputasi Awan** — Basis data, API backend, dan dasbor dihosting di Azure sebagai sumber data tunggal dari seluruh transaksi, sekaligus menjadi media *showcase* produk.
+- **Jaringan Komputer.** Transaksi setoran tetap dapat dicatat saat koneksi internet terbatas melalui penyimpanan lokal pada aplikasi desktop, yang kemudian tersinkronisasi otomatis ke server saat koneksi tersedia (*queue-and-replay*).
+- **Kecerdasan Buatan.** Model *computer vision* berbasis *transfer learning* membantu petugas mengklasifikasikan jenis sampah dari foto, sekaligus menghitung estimasi dampak lingkungan (CO2e) dari data setoran menggunakan acuan faktor emisi standar (IPCC Guidelines).
+- **Komputasi Awan.** Basis data, API backend, dan dasbor dihosting di Azure sebagai sumber data tunggal dari seluruh transaksi, sekaligus menjadi media *showcase* produk.
 
 Pengembangan diprioritaskan pada fitur inti (MVP): pencatatan transaksi *offline-capable*, klasifikasi AI, dan dasbor CO2e. Fitur seperti prediksi tren volume setoran, laporan otomatis ke DLH, dan dasbor multi-lokasi menjadi pengembangan lanjutan jika waktu memungkinkan.
 
@@ -45,7 +45,7 @@ Pengembangan diprioritaskan pada fitur inti (MVP): pencatatan transaksi *offline
 | **e-Bank Sampah DKI Jakarta** | Direct Competitor | Dukungan resmi pemerintah daerah, insentif kebijakan publik | Cakupan terbatas DKI Jakarta, tidak ada fitur offline/AI/CO2e |
 | **Pencatatan Manual (Buku/Excel)** | Indirect Competitor | Gratis, tanpa kurva belajar | Rawan human error, tidak ada rekap otomatis, tidak ada estimasi dampak lingkungan |
 
-**Diferensiasi TRASHURY:** kombinasi *offline-first* + klasifikasi AI + pelaporan CO2e otomatis dalam satu produk yang dirancang khusus untuk skala bank sampah RW/kalurahan — belum digarap bersamaan oleh kompetitor manapun.
+**Diferensiasi TRASHURY:** kombinasi *offline-first* + klasifikasi AI + pelaporan CO2e otomatis dalam satu produk yang dirancang khusus untuk skala bank sampah RW/kalurahan, dan belum digarap bersamaan oleh kompetitor manapun.
 
 ---
 
@@ -61,7 +61,7 @@ Kami memilih metodologi Agile karena proyek TRASHURY dikembangkan dalam kurun wa
 
 Hal ini penting karena kelompok kami membagi fitur menjadi fitur inti (MVP) dan fitur pengembangan lanjutan (*stretch goal*), sehingga pendekatan iteratif Agile lebih sesuai untuk mengakomodasi prioritas fitur yang dapat disesuaikan tergantung sisa waktu dan sumber daya tim yang terbatas (3 anggota).
 
-## Perancangan Tahap 1–3 SDLC
+## Perancangan Tahap 1-3 SDLC
 
 ### A. Tujuan Produk
 
@@ -149,8 +149,8 @@ Keterangan: `X` menunjukkan pertemuan ketika kegiatan dikerjakan.
 
 ## Dokumen Pendukung
 
-- [Dokumentasi Proyek](dokumentasi-proyek.md) — arsitektur sistem, struktur repositori, keputusan desain, alur kerja tim, dan status pekerjaan.
-- [Panduan Demo](panduan-demo.md) — naskah peragaan produk beserta persiapan dan rencana cadangan.
-- [ERD TRASHURY (.drawio)](design/erd-trashury.drawio) — diagram relasi antarentitas.
-- [Skema Database Lokal (.sql)](design/schema-lokal.sql) — DDL SQLite untuk basis data di mesin operator.
-- [Skema Database Server (.sql)](design/schema-azure.sql) — DDL PostgreSQL untuk basis data terpusat di Azure.
+- [Dokumentasi Proyek](dokumentasi-proyek.md): arsitektur sistem, struktur repositori, keputusan desain, alur kerja tim, dan status pekerjaan.
+- [Panduan Demo](panduan-demo.md): naskah peragaan produk beserta persiapan dan rencana cadangan.
+- [ERD TRASHURY (.drawio)](design/erd-trashury.drawio): diagram relasi antarentitas.
+- [Skema Database Lokal (.sql)](design/schema-lokal.sql): DDL SQLite untuk basis data di mesin operator.
+- [Skema Database Server (.sql)](design/schema-azure.sql): DDL PostgreSQL untuk basis data terpusat di Azure.

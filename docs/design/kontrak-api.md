@@ -351,3 +351,18 @@ Yang perlu disepakati sebelum endpoint dianggap selesai:
 Endpoint sinkronisasi massal untuk #16 belum termasuk dalam dokumen ini dan
 akan disusun tersendiri. Sifat aman diulang pada endpoint di atas sudah
 disiapkan untuk keperluan tersebut.
+
+## 10. Batas Pembuktian Pengujian
+
+Penguncian baris pada penarikan diuji lewat dua permintaan yang dikirim
+bersamaan, dan hasilnya tepat satu berhasil serta satu ditolak. Perlu dicatat
+bahwa pengujian berjalan di atas PGlite yang melayani satu koneksi, sehingga
+permintaan tersebut pada kenyataannya dijalankan berurutan.
+
+Artinya pengujian itu membuktikan logika keputusannya benar, tetapi belum
+membuktikan perilaku penguncian saat dua koneksi sungguhan berebut baris yang
+sama. Pembuktian penuh baru mungkin setelah PostgreSQL terpasang di #18.
+
+Lapisan pertahanan terakhir tetap ada dan sudah diuji, yaitu batasan
+`CHECK (total_saldo >= 0)` pada basis data, yang menolak penyimpanan walau
+seluruh pemeriksaan di atasnya terlewat.

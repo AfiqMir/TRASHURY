@@ -153,3 +153,4 @@ Keterangan: `X` menunjukkan pertemuan ketika kegiatan dikerjakan.
 - [Panduan Demo](panduan-demo.md) — naskah peragaan produk beserta persiapan dan rencana cadangan.
 - [ERD TRASHURY (.drawio)](design/erd-trashury.drawio) — diagram relasi antarentitas.
 - [Skema Database Lokal (.sql)](design/schema-lokal.sql) — DDL SQLite untuk basis data di mesin operator.
+- [Skema Database Server (.sql)](design/schema-azure.sql) — DDL PostgreSQL untuk basis data terpusat di Azure.

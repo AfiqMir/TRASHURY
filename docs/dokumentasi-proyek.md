@@ -117,8 +117,10 @@ nama lain, workflow harus ikut diubah.
 - **Diagram:** `docs/design/erd-trashury.drawio` — buka di
   <https://app.diagrams.net> (File → Open From → Device) atau ekstensi
   *Draw.io Integration* di VS Code.
-- **Skema:** `docs/design/schema-lokal.sql` — DDL SQLite untuk database lokal
+- **Skema lokal:** `docs/design/schema-lokal.sql` — DDL SQLite untuk database
   di mesin operator.
+- **Skema server:** `docs/design/schema-azure.sql` — DDL PostgreSQL untuk
+  Azure Database for PostgreSQL, sumber data tunggal seluruh unit.
 
 Enam entitas: `nasabah`, `operator`, `kategori_sampah`, `transaksi`,
 `detail_transaksi`, `penarikan_saldo`. Dua view disiapkan untuk kebutuhan
@@ -130,6 +132,46 @@ Membuat database kosong untuk percobaan:
 sqlite3 trashury.db < docs/design/schema-lokal.sql
 sqlite3 trashury.db ".tables"
 ```
+
+### Dua skema, satu ERD
+
+Entitas dan relasinya sama persis di kedua sisi; yang berbeda hanya hal-hal
+yang memang harus berbeda:
+
+| Aspek | Lokal (SQLite) | Server (PostgreSQL) |
+|---|---|---|
+| Identifier | `TEXT` berisi UUID buatan klien | `UUID` native; tabel master boleh `gen_random_uuid()`, tabel transaksional **wajib** memakai UUID kiriman klien |
+| Uang | `INTEGER` rupiah | `BIGINT` rupiah |
+| Berat & CO2e | `REAL` | `NUMERIC(10,2)` dan `NUMERIC(12,4)` — presisi pasti, tidak ada galat pembulatan biner pada angka laporan |
+| Waktu | `TEXT` ISO-8601 UTC | `TIMESTAMPTZ` |
+| Boolean | `INTEGER` 0/1 | `BOOLEAN` |
+| Status sinkronisasi | `sync_status`, `synced_at` | tidak ada — diganti `diterima_at` |
+
+Kolom `sync_status` sengaja tidak ikut ke server: statusnya adalah urusan
+masing-masing klien, dan server tidak perlu tahu sebuah baris dulu sempat
+mengantre berapa lama. Sebagai gantinya server mencatat `diterima_at`, yaitu
+kapan baris itu betul-betul sampai — selisihnya terhadap `tanggal` sekaligus
+menjadi bukti terukur bahwa mekanisme offline memang bekerja, dan itu angka
+yang enak ditunjukkan saat demo.
+
+### Sinkronisasi yang aman diulang
+
+Karena primary key transaksi dibuat di klien, server dapat menerima kiriman
+yang sama berkali-kali tanpa menggandakan data. Inilah yang membuat
+*queue-and-replay* (#16) aman ketika koneksi terputus di tengah pengiriman dan
+klien mencoba lagi:
+
+```sql
+INSERT INTO transaksi (id_transaksi, id_nasabah, id_operator, tanggal,
+                       total_nominal, total_co2e)
+VALUES ($1, $2, $3, $4, $5, $6)
+ON CONFLICT (id_transaksi) DO NOTHING;
+```
+
+Konsekuensinya, endpoint sinkronisasi di #15 wajib memakai pola `ON CONFLICT
+DO NOTHING` ini, bukan `INSERT` polos. Satu transaksi beserta seluruh
+detailnya juga harus dikirim dalam satu transaksi database, supaya tidak
+pernah ada transaksi yang tersimpan tanpa detailnya.
 
 > Catatan revisi terhadap ERD di halaman utama: entitas **Detail Transaksi**
 > kini memuat `id_kategori` sebagai *foreign key*. Tanpa kolom itu relasi

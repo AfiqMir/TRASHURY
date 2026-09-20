@@ -106,14 +106,14 @@ export async function simpanTransaksi(
   },
 ): Promise<HasilSimpanTransaksi> {
   return basis.dalamTransaksi(async (trx) => {
-    const tersimpan = await ambilTransaksi(trx, data.id_transaksi);
-    if (tersimpan) return { keadaan: 'sudah_ada', transaksi: tersimpan };
-
     const nasabah = await trx.kueri<{ id_nasabah: string }>(
       'SELECT id_nasabah FROM nasabah WHERE id_nasabah = $1 FOR UPDATE',
       [data.id_nasabah],
     );
     if (nasabah.rows.length === 0) return { keadaan: 'nasabah_tidak_ada' };
+
+    const tersimpan = await ambilTransaksi(trx, data.id_transaksi);
+    if (tersimpan) return { keadaan: 'sudah_ada', transaksi: tersimpan };
 
     const kategori = await trx.kueri<{
       id_kategori: string;

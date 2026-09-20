@@ -22,7 +22,19 @@ Aplikasi web progresif (PWA) yang dapat dipasang pada komputer operator sehingga
 
 ## Latar Belakang & Permasalahan
 
-Bank sampah tingkat RW/kalurahan umumnya masih mencatat transaksi setoran secara manual menggunakan buku atau spreadsheet, yang rentan terhadap kesalahan pencatatan dan kehilangan data. Platform digital nasional yang sudah ada, seperti Smash.id, dirancang untuk skala nasional dengan ekosistem yang kompleks sehingga kurang praktis diadopsi langsung oleh unit bank sampah kecil yang membutuhkan solusi ringan, cepat dipasang, dan tetap dapat digunakan pada kondisi jaringan yang tidak selalu stabil. Selain itu, belum ditemukan platform yang secara otomatis mengonversi data setoran sampah menjadi estimasi dampak lingkungan (emisi CO2e) yang siap digunakan untuk pelaporan ke Dinas Lingkungan Hidup (DLH).
+### Besaran persoalan sampah
+
+Sistem Informasi Pengelolaan Sampah Nasional (SIPSN) Kementerian Lingkungan Hidup dan Kehutanan mencatat timbulan sampah Indonesia mencapai 31,9 juta ton per 24 Juli 2024. Dari jumlah itu, 11,3 juta ton atau 36,7 persen tidak terkelola dengan baik.[1] Angka SIPSN bersifat indikatif karena bergantung pada pelaporan tiap daerah, sehingga besaran sebenarnya berpotensi lebih tinggi.
+
+Persoalan ini nyata di wilayah tempat produk dikembangkan. Dinas Lingkungan Hidup Kabupaten Sleman mencatat rata-rata timbulan sampah daerahnya mencapai 601,6 ton per hari dari aktivitas 1.157.000 penduduk.[2] Pada periode yang sama, kapasitas pengolahan yang tersedia melalui depo, TPS3R, dan bank sampah baru 104,4 ton per hari.[3] Artinya hanya sekitar 17 persen timbulan harian yang tertangani fasilitas resmi, dan sisanya bergantung pada pengelolaan di tingkat warga.
+
+Bank sampah sudah menjadi simpul pengelolaan di tingkat warga itu. Di Kota Yogyakarta saja terdapat 479 bank sampah yang tersebar di 14 kemantren dan 45 kelurahan.[4] Jumlah sebanyak itu menunjukkan unit bank sampah kecil adalah pemain utama pengurangan sampah di DIY, bukan pengecualian.
+
+### Persoalan pada operasional bank sampah
+
+Bank sampah tingkat RW dan kalurahan umumnya masih mencatat transaksi setoran secara manual menggunakan buku atau spreadsheet. Keterbatasan sistem pencatatan manual dan belum adanya integrasi teknologi dalam tata kelola bank sampah menjadi persoalan yang berulang ditemukan pada program pendampingan bank sampah.[5] Pencatatan manual rentan terhadap kesalahan hitung dan kehilangan data, sementara penyusunan rekapitulasi bulanan harus dikerjakan ulang dari awal setiap periode.
+
+Platform digital nasional yang sudah ada, seperti Smash.id, dirancang untuk skala nasional dengan ekosistem yang kompleks sehingga kurang praktis diadopsi langsung oleh unit bank sampah kecil yang membutuhkan solusi ringan, cepat dipasang, dan tetap dapat digunakan pada kondisi jaringan yang tidak selalu stabil. Selain itu, belum ditemukan platform yang secara otomatis mengonversi data setoran sampah menjadi estimasi dampak lingkungan (emisi CO2e) yang siap digunakan untuk pelaporan ke Dinas Lingkungan Hidup (DLH).
 
 **Rumusan Permasalahan:**
 Bagaimana merancang sistem pencatatan bank sampah digital yang (1) tetap dapat digunakan dalam kondisi konektivitas terbatas, (2) mempermudah proses klasifikasi jenis sampah oleh petugas, dan (3) menghasilkan estimasi dampak lingkungan secara otomatis yang dapat dilaporkan ke pihak berwenang, tanpa kompleksitas adopsi seperti platform nasional yang sudah ada?
@@ -144,6 +156,16 @@ Keterangan: `X` menunjukkan pertemuan ketika kegiatan dikerjakan.
 | Pengembangan Stretch Goals & Integrasi Fitur |  |  |  |  |  |  |  |  | X | X |  |  |
 | System Integration Testing (SIT) & Fix Bug |  |  |  |  |  |  |  |  |  |  | X |  |
 | Penyusunan Dokumentasi & Final Review |  |  |  |  |  |  |  |  |  |  |  | X |
+
+---
+
+## Referensi
+
+1. Kompas Lestari, "11,3 Juta Ton Sampah Indonesia Tidak Terkelola dengan Baik", 28 Juli 2024, mengutip Sistem Informasi Pengelolaan Sampah Nasional (SIPSN) Kementerian Lingkungan Hidup dan Kehutanan. <https://lestari.kompas.com/read/2024/07/28/130000286/113-juta-ton-sampah-indonesia-tidak-terkelola-dengan-baik>
+2. Harian Jogja, "Rata-Rata Timbulan Sampah di Sleman Menyentuh 601 Ton per Hari", 2 Januari 2025, mengutip Kepala Dinas Lingkungan Hidup Kabupaten Sleman. <https://jogjapolitan.harianjogja.com/r-1199714/rata-rata-timbulan-sampah-di-sleman-menyentuh-601-ton-per-hari>
+3. BPK RI Perwakilan Provinsi DIY, "Sleman Kelola Sampah 104 Ton Per-Hari", 30 Januari 2025, bersumber dari Dinas Lingkungan Hidup Kabupaten Sleman. <https://yogyakarta.bpk.go.id/sleman-kelola-sampah-104-ton-per-hari/>
+4. Dinas Lingkungan Hidup Kota Yogyakarta, "Peta Sebaran Bank Sampah di Kota Yogyakarta". <https://lingkunganhidup.jogjakota.go.id/page/index/peta-sebaran-bank-sampah-di-kota-yogyakarta>
+5. Fajriah, R., Meiyanti, R., dan Wardhani, N. K., "Digitalisasi Bank Sampah untuk Mendukung Smart Waste Management di Kelurahan Duri Kepa", Jurnal PkM Pengabdian kepada Masyarakat, Vol. 9 No. 1, 2026. <https://newjournal.lppmunindra.ac.id/index.php/pkm/article/view/541>
 
 ---
 

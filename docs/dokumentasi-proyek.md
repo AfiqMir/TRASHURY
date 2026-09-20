@@ -87,34 +87,54 @@ Tiga teknologi yang diintegrasikan sesuai ketentuan mata kuliah:
 
 ## 3. Struktur Repositori
 
-Kondisi saat ini:
+Repositori memakai npm workspaces sehingga modul yang dipakai bersama cukup
+ditulis sekali.
 
 ```
 TRASHURY/
-├── README.md
-├── .github/workflows/main.yml     # CI: cek struktur repo + lint & build frontend
-├── docs/                          # GitHub Pages (Jekyll, tema Cayman)
-│   ├── _config.yml
-│   ├── index.md                   # profil produk + perancangan SDLC 1-3
-│   ├── dokumentasi-proyek.md      # dokumen ini
-│   ├── panduan-demo.md            # skenario demo
-│   └── design/
-│       ├── erd-trashury.drawio    # ERD (buka di draw.io / diagrams.net)
-│       └── schema-lokal.sql       # DDL SQLite untuk database lokal
-└── .vscode/settings.json
+├── package.json
+├── tsconfig.base.json
+├── .github/workflows/main.yml
+├── shared/
+│   └── src/
+│       ├── perhitungan.ts
+│       └── tipe.ts
+├── backend/
+│   ├── src/
+│   │   ├── aplikasi.ts
+│   │   ├── openapi.ts
+│   │   ├── db/
+│   │   ├── http/
+│   │   ├── middleware/
+│   │   └── rute/
+│   └── tests/
+└── docs/
+    ├── index.md
+    ├── dokumentasi-proyek.md
+    ├── panduan-demo.md
+    └── design/
+        ├── erd-trashury.drawio
+        ├── kontrak-api.md
+        ├── schema-azure.sql
+        └── schema-lokal.sql
 ```
 
-Rencana penambahan (belum ada, menyusul sesuai issue):
+Belum ada, menyusul sesuai issue: `frontend/` untuk PWA kasir (#26 sampai #30)
+dan modul kecerdasan buatan (#19 sampai #25).
 
-```
-├── backend/                       # API + skema server        (#14, #15)
-├── frontend/                      # PWA kasir                 (#26-#30)
-└── ai/                            # notebook & ekspor model   (#19-#25)
-```
+Nama folder `frontend/` dipakai sebagai acuan oleh CI lewat variabel
+`FRONTEND_DIR`. Jika folder ini nanti diberi nama lain, workflow harus ikut
+diubah.
 
-Nama folder `frontend/` sudah dipakai sebagai acuan oleh CI (variabel
-`FRONTEND_DIR` pada `.github/workflows/main.yml`). Jika folder ini nanti diberi
-nama lain, workflow harus ikut diubah.
+### Mengapa ada paket shared
+
+Perhitungan uang dan CO2e dibutuhkan di dua tempat sekaligus: di PWA saat
+operator bekerja luring, dan di API sebagai pemegang kebenaran. Paket
+`shared` membuat perhitungan itu ditulis sekali lalu dipakai keduanya.
+
+Tanpa pemisahan ini, aturan pembulatan harus ditulis ulang di sisi klien dan
+berisiko menyimpang dari server. Gejalanya adalah saldo di layar berbeda
+dengan saldo di server sesudah sinkronisasi, dan itu baru ketahuan saat demo.
 
 ## 4. Basis Data
 
@@ -193,6 +213,8 @@ Prasyarat yang sudah dipakai sekarang:
 | Kebutuhan | Versi | Dipakai untuk |
 |---|---|---|
 | Git | 2.40+ | Version control |
+| Node.js | 22 atau lebih baru | Menjalankan API dan pengujian |
+| PostgreSQL | 16+ | Basis data server saat pengembangan lokal |
 | SQLite | 3.40+ | Menjalankan `schema-lokal.sql` |
 | draw.io / diagrams.net | bebas | Membuka berkas `.drawio` |
 
@@ -203,8 +225,29 @@ git clone https://github.com/AfiqMir/TRASHURY.git
 cd TRASHURY
 ```
 
-Prasyarat tambahan yang akan menyusul bersama kodenya: Node.js 22 (frontend
-PWA, sudah dipatok di CI) dan Python 3.11 (pelatihan model AI).
+Menjalankan API di mesin sendiri:
+
+```bash
+npm install
+cp backend/.env.example backend/.env
+psql "$DATABASE_URL" -f docs/design/schema-azure.sql
+npm run dev:api
+```
+
+Dokumentasi endpoint tersedia di `http://localhost:3000/docs` selama server
+berjalan, dan dihasilkan dari skema validasi yang sama dengan yang dipakai
+endpoint, sehingga tidak bisa menyimpang dari perilaku sebenarnya.
+
+Menjalankan seluruh pengujian:
+
+```bash
+npm test
+```
+
+Pengujian API tidak membutuhkan PostgreSQL yang terpasang maupun Docker.
+Berkas `schema-azure.sql` dijalankan pada PGlite, yaitu PostgreSQL yang
+dikompilasi ke WebAssembly, sehingga kueri diuji pada mesin basis data yang
+sama dengan yang dipakai di Azure.
 
 ## 6. Alur Kerja Tim
 
@@ -240,7 +283,8 @@ PWA, sudah dipatok di CI) dan Python 3.11 (pelatihan model AI).
 | ERD dan skema database | Selesai | #13 |
 | Dokumentasi proyek & panduan demo | Selesai | #8 |
 | Desain UI hi-fi | Berjalan | #10 |
-| API master data & transaksi | Belum mulai | #14, #15 |
+| API master data nasabah dan kategori | Selesai | #14 |
+| API transaksi, penarikan, dan saldo | Berjalan | #15 |
 | Sinkronisasi offline ke online | Belum mulai | #16 |
 | Rekap & export laporan bulanan | Belum mulai | #17 |
 | Deployment Azure | Belum mulai | #18 |

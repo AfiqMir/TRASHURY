@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  FRONTEND_DIR: frontend   # ubah jika folder kode PWA kalian berbeda
+  FRONTEND_DIR: frontend
   NODE_VERSION: "22"
 
 jobs:
@@ -24,6 +24,32 @@ jobs:
           test -f README.md || { echo "::error::README.md tidak ditemukan"; exit 1; }
           test -d docs || { echo "::error::Folder docs (GitHub Page) tidak ditemukan"; exit 1; }
           echo "Struktur dokumentasi lengkap."
+
+  api:
+    name: Build dan uji API
+    runs-on: ubuntu-latest
+    needs: repo-check
+    steps:
+      - name: Checkout kode
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v5
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependency
+        run: npm ci
+
+      - name: Build seluruh workspace
+        run: npm run build
+
+      - name: Jalankan pengujian
+        run: npm test
+
+      - name: Periksa kerentanan dependency produksi
+        run: npm audit --omit=dev --audit-level=high
 
   frontend-build:
     name: Lint dan build frontend PWA

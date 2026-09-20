@@ -43,6 +43,17 @@ Tahap perancangan, kode aplikasi belum dimulai. Rincian per bidang ada di
 | [Skema database server](docs/design/schema-azure.sql) | DDL PostgreSQL untuk basis data terpusat di Azure |
 | [Kontrak API](docs/design/kontrak-api.md) | Spesifikasi endpoint, aturan validasi, dan bentuk galat |
 
+## Menjalankan API
+
+```bash
+npm install
+cp backend/.env.example backend/.env
+npm run dev:api
+```
+
+Dokumentasi endpoint terbuka di `http://localhost:3000/docs`. Seluruh pengujian
+dijalankan dengan `npm test` dan tidak membutuhkan PostgreSQL terpasang.
+
 ## Mencoba skema database
 
 ```bash

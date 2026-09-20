@@ -249,6 +249,20 @@ Berkas `schema-azure.sql` dijalankan pada PGlite, yaitu PostgreSQL yang
 dikompilasi ke WebAssembly, sehingga kueri diuji pada mesin basis data yang
 sama dengan yang dipakai di Azure.
 
+### Dua lapis pengujian
+
+`npm test` memanggil aplikasi di dalam proses. Cepat, jalan di CI, dan cukup
+untuk memeriksa aturan bisnis.
+
+`npm run smoke` menjalankan server sungguhan lewat HTTP terhadap PostgreSQL
+sungguhan. Lapisan ini menangkap hal yang tidak terlihat oleh pengujian di
+dalam proses, yaitu perilaku driver basis data, kumpulan koneksi, dan keadaan
+berebut antarpermintaan. Langkah penyiapannya ada di
+`scripts/smoke/README.md`.
+
+Keduanya dibutuhkan. Bug penguncian yang ditemukan pada 21 September 2026 lolos
+dari seluruh 50 pengujian `npm test` dan hanya muncul di `npm run smoke`.
+
 ## 6. Alur Kerja Tim
 
 1. Semua pekerjaan berangkat dari issue di GitHub Project kelompok. Ambil

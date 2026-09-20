@@ -352,16 +352,33 @@ Endpoint sinkronisasi massal untuk #16 belum termasuk dalam dokumen ini dan
 akan disusun tersendiri. Sifat aman diulang pada endpoint di atas sudah
 disiapkan untuk keperluan tersebut.
 
-## 10. Batas Pembuktian Pengujian
+## 10. Pembuktian Perilaku Serentak
 
-Penguncian baris pada penarikan diuji lewat dua permintaan yang dikirim
-bersamaan, dan hasilnya tepat satu berhasil serta satu ditolak. Perlu dicatat
-bahwa pengujian berjalan di atas PGlite yang melayani satu koneksi, sehingga
-permintaan tersebut pada kenyataannya dijalankan berurutan.
+Penguncian baris pada penarikan sudah dibuktikan pada PostgreSQL sungguhan,
+bukan hanya pada PGlite. Tiga penarikan dikirim bersamaan terhadap saldo yang
+hanya cukup untuk satu, dan hasilnya tetap satu berhasil serta dua ditolak
+dengan `SALDO_TIDAK_CUKUP`. Saldo tidak pernah menjadi negatif pada sepuluh
+kali pengulangan.
 
-Artinya pengujian itu membuktikan logika keputusannya benar, tetapi belum
-membuktikan perilaku penguncian saat dua koneksi sungguhan berebut baris yang
-sama. Pembuktian penuh baru mungkin setelah PostgreSQL terpasang di #18.
+Perlu dicatat bahwa `npm test` tidak dapat membuktikan hal ini. PGlite yang
+dipakainya hanya melayani satu koneksi, sehingga permintaan yang dikirim
+bersamaan pada kenyataannya dijalankan berurutan. Pembuktian perilaku serentak
+adalah tugas `npm run smoke`, yang membutuhkan PostgreSQL sungguhan.
+
+### Urutan kunci dan pemeriksaan
+
+Baris nasabah dikunci lebih dahulu, baru sesudah itu diperiksa apakah transaksi
+atau penarikan dengan identifier tersebut sudah tersimpan.
+
+Urutan ini penting dan sempat salah. Ketika pemeriksaan dijalankan sebelum
+penguncian, dua permintaan kembar yang tiba bersamaan sama-sama menyimpulkan
+data belum ada, lalu yang kedua bertabrakan di kunci primer dan dibalas galat
+server. Klien yang mengirim ulang karena koneksi buruk justru menerima galat,
+padahal itulah keadaan yang paling sering terjadi pada pemakaian luring.
+
+Dengan penguncian didahulukan, permintaan kedua menunggu sampai yang pertama
+selesai, sehingga pemeriksaannya melihat data yang sudah tersimpan dan
+membalas `200` sebagaimana mestinya.
 
 Lapisan pertahanan terakhir tetap ada dan sudah diuji, yaitu batasan
 `CHECK (total_saldo >= 0)` pada basis data, yang menolak penyimpanan walau

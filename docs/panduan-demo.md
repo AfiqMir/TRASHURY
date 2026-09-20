@@ -4,8 +4,8 @@ title: Panduan Demo TRASHURY
 
 # Panduan Demo TRASHURY
 
-Status per 17 September 2026: aplikasi belum dapat dijalankan karena backend,
-frontend, dan integrasi model AI masih dalam pengerjaan. Dokumen ini adalah
+Status per 20 September 2026: aplikasi belum dapat dijalankan karena aplikasi
+desktop, API, dan integrasi Azure Custom Vision masih dalam pengerjaan. Dokumen ini adalah
 naskah demo yang disepakati di awal supaya setiap fitur dibangun dengan target
 peragaan yang jelas. Bagian "Demo Saat Ini" berisi yang benar-benar bisa
 diperagakan hari ini, sedangkan "Naskah Demo Akhir" adalah targetnya.
@@ -66,8 +66,10 @@ Durasi: ±10 menit. Perbarui daftar ini setiap kali satu fitur selesai.
       ditambah satu foto cadangan yang sudah diuji dikenali dengan benar.
 - [ ] Akun operator dan akun pengurus siap, kata sandinya dicatat.
 - [ ] Mode pesawat / pemutus Wi-Fi siap dipakai untuk peragaan offline.
-- [ ] Aplikasi sudah terpasang sebagai PWA dan dibuka satu kali sebelum demo
-      agar service worker selesai memuat aset.
+- [ ] Aplikasi sudah terpasang di mesin demo dan dibuka satu kali sebelum
+      tampil, supaya tidak ada kejutan saat pertama kali dijalankan.
+- [ ] Mesin demo memakai Windows, karena aplikasi WPF tidak berjalan di
+      macOS maupun Linux.
 - [ ] Dashboard Azure sudah terbuka di tab terpisah.
 
 ### Alur peragaan
@@ -77,7 +79,7 @@ Durasi: ±10 menit. Perbarui daftar ini setiap kali satu fitur selesai.
 | 1 | Masuk sebagai operator | Autentikasi operator | |
 | 2 | Tambah satu nasabah baru | Kelola data nasabah | FR 1 |
 | 3 | Buka master kategori sampah | Harga per kg dan faktor CO2e per kategori | FR 2 |
-| 4 | Mulai transaksi setoran, foto sampah | Model AI mengusulkan kategori, operator mengoreksi bila perlu | FR 3, FR 4 |
+| 4 | Mulai transaksi setoran, foto sampah | Azure Custom Vision mengusulkan kategori, operator mengoreksi bila perlu | FR 3, FR 4 |
 | 5 | Masukkan berat, simpan transaksi | Total rupiah dan CO2e dihitung otomatis | FR 3 |
 | 6 | Putuskan koneksi internet, catat satu transaksi lagi | Transaksi tetap tersimpan, indikator "menunggu sinkronisasi" muncul | FR 3 |
 | 7 | Sambungkan kembali internet | Antrian terkirim sendiri, status berubah menjadi tersinkronisasi | |
@@ -95,7 +97,7 @@ mewakili komponen Kecerdasan Buatan, langkah 8 mewakili Komputasi Awan.
 
 | Risiko | Antisipasi |
 |---|---|
-| Model AI salah mengenali sampah | Segera koreksi manual di layar, lalu jelaskan bahwa koreksi ini memang dicatat (`sumber_klasifikasi`) sebagai bahan evaluasi akurasi |
+| Custom Vision salah mengenali sampah | Segera koreksi manual di layar, lalu jelaskan bahwa koreksi ini memang dicatat (`sumber_klasifikasi`) sebagai bahan evaluasi akurasi |
 | Internet lokasi demo tidak stabil | Justru manfaatkan: fitur utama produk ini memang jalan tanpa internet |
 | Backend Azure lambat merespons | Tunjukkan data lokal dulu, jelaskan sinkronisasi bersifat asinkron dan tidak memblokir kasir |
 | Aplikasi gagal dibuka | Sediakan rekaman layar demo lengkap sebagai cadangan |
@@ -104,7 +106,7 @@ mewakili komponen Kecerdasan Buatan, langkah 8 mewakili Komputasi Awan.
 
 | Bagian | Penanggung jawab |
 |---|---|
-| Pembuka, latar belakang, penutup | Wangsit (ketua) |
-| Peragaan alur kasir dan buku tabungan | Bintang (frontend) |
-| Penjelasan model AI dan perhitungan CO2e | Afiq (AI) |
-| Peragaan offline ke online dan dashboard Azure | Wangsit (backend) |
+| Pembuka, latar belakang, penutup | Wangsit |
+| Peragaan alur kasir dan buku tabungan | Bintang |
+| Penjelasan klasifikasi Custom Vision dan perhitungan CO2e | Afiq |
+| Peragaan offline ke online dan dashboard Azure | Wangsit |

@@ -1,7 +1,8 @@
 # TRASHURY
 
-Aplikasi kasir dan manajemen database lokal untuk memodernisasi operasional
-bank sampah kalurahan tanpa ketergantungan internet penuh.
+Aplikasi desktop kasir dan manajemen database lokal untuk memodernisasi
+operasional bank sampah kalurahan tanpa ketergantungan internet penuh.
+Dibangun dengan C# dan WPF, kategori Climate Action.
 
 [![CI TRASHURY](https://github.com/AfiqMir/TRASHURY/actions/workflows/main.yml/badge.svg)](https://github.com/AfiqMir/TRASHURY/actions/workflows/main.yml)
 
@@ -15,8 +16,8 @@ TRASHURY menjawabnya dengan tiga hal sekaligus dalam satu produk:
 
 1. Tetap jalan tanpa internet. Transaksi dicatat ke basis data lokal, lalu
    menyusul terkirim ke server begitu koneksi tersedia.
-2. Klasifikasi sampah dibantu AI. Petugas memotret sampah, model computer
-   vision mengusulkan kategorinya.
+2. Klasifikasi sampah dibantu AI. Petugas memotret sampah, Azure Custom
+   Vision mengusulkan kategorinya.
 3. Estimasi CO2e otomatis. Berat setoran dikonversi menjadi estimasi
    pengurangan emisi memakai faktor acuan IPCC, siap dipakai untuk pelaporan
    bulanan ke DLH.
@@ -28,7 +29,7 @@ Tahap perancangan, kode aplikasi belum dimulai. Rincian per bidang ada di
 
 | Sudah ada | Belum ada |
 |---|---|
-| Perancangan SDLC tahap 1-3, ERD, skema database lokal, dokumentasi, panduan demo, CI | Backend API, frontend PWA, integrasi model AI, deployment Azure |
+| Perancangan SDLC tahap 1-3, ERD, skema database lokal dan server, dokumentasi, panduan demo, CI | Aplikasi desktop WPF, API, integrasi Custom Vision, deployment Azure |
 
 ## Dokumentasi
 

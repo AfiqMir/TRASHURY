@@ -19,6 +19,8 @@ kerja, dan konvensi kerja tim.
 | | |
 |---|---|
 | Nama produk | TRASHURY |
+| Kategori | Climate Action |
+| Tipe aplikasi | Aplikasi desktop Windows, dibangun dengan C# dan WPF |
 | Mata kuliah | Senior Project TI |
 | Instansi | Departemen Teknologi Elektro dan Teknologi Informasi, FT UGM |
 | Repositori | <https://github.com/AfiqMir/TRASHURY> |
@@ -26,11 +28,14 @@ kerja, dan konvensi kerja tim.
 
 Kelompok Keren.
 
-| Peran | Nama | NIM | Akun GitHub | Fokus pengerjaan |
+Modul praktikum menetapkan tiga tanggung jawab: software architect, backend
+developer, dan front end developer. Pembagiannya di kelompok ini:
+
+| Tanggung jawab | Nama | NIM | Akun GitHub | Cakupan |
 |---|---|---|---|---|
-| Ketua | Wangsit Nursyahada | 24/545092/TK/60594 | `wngstnr-code` | Basis data, API backend, sinkronisasi, deployment Azure, dokumentasi |
-| Anggota | Muhammad Afiq Mirza Choiruzan | 24/537942/TK/59646 | `AfiqMir` | Model AI klasifikasi sampah, logika CO2e, forecasting |
-| Anggota | Bintang Daneswara | 24/541599/TK/60084 | `bintangdanes` | Desain UI, frontend PWA, pengujian usability |
+| Software architect, backend developer | Wangsit Nursyahada | 24/545092/TK/60594 | `wngstnr-code` | Rancangan sistem, basis data, API, sinkronisasi, deployment Azure, dokumentasi |
+| Backend developer (layanan cerdas) | Muhammad Afiq Mirza Choiruzan | 24/537942/TK/59646 | `AfiqMir` | Klasifikasi sampah lewat Azure Custom Vision, logika perhitungan CO2e |
+| Front end developer | Bintang Daneswara | 24/541599/TK/60084 | `bintangdanes` | Antarmuka WPF, desain UI, pengujian usability |
 
 ## 2. Arsitektur Sistem
 
@@ -38,33 +43,39 @@ TRASHURY dirancang *offline-first*: aplikasi tetap dapat mencatat transaksi
 tanpa internet, lalu menyusul mengirim data ke server saat koneksi tersedia.
 
 ```
-+---------------------------------------------------+
-|  Aplikasi Desktop Operator (PWA installable)       |
-|                                                    |
-|  UI kasir  --->  Service worker  --->  DB lokal    |
-|                     (cache)           (SQLite)     |
-|      |                                    |        |
-|      v                                    v        |
-|  Model AI ONNX                   Antrian sinkronisasi
-|  (klasifikasi foto, jalan lokal)  sync_status='pending'
-+---------------------------------------------------+
-                        |
-                        |  HTTPS, queue-and-replay saat online
-                        v
-+---------------------------------------------------+
-|  Backend API + Database terpusat (Azure)           |
-|  - sumber data tunggal seluruh transaksi           |
-|  - dashboard CO2e & rekap laporan bulanan DLH      |
-+---------------------------------------------------+
++-----------------------------------------------------+
+|  TRASHURY Desktop (C# WPF, mesin operator)          |
+|                                                     |
+|  Jendela kasir  --->  Lapisan data  --->  SQLite    |
+|                                           lokal     |
+|       |                       |                     |
+|       v                       v                     |
+|  Foto sampah          Antrian sinkronisasi          |
+|                       sync_status='pending'         |
++-----------------------------------------------------+
+            |                        |
+            | HTTPS                  | HTTPS, queue-and-replay
+            v                        v
++----------------------+  +---------------------------+
+| Azure Custom Vision  |  | TRASHURY API (ASP.NET     |
+| klasifikasi kategori |  | Core) + PostgreSQL Azure  |
+| sampah dari foto     |  | sumber data tunggal,      |
+|                      |  | rekap CO2e bulanan        |
++----------------------+  +---------------------------+
 ```
 
-Tiga teknologi yang diintegrasikan sesuai ketentuan mata kuliah:
+Klasifikasi foto memerlukan koneksi karena dilayani Azure Custom Vision. Saat
+koneksi tidak ada, operator memilih kategori secara manual dan transaksi tetap
+tercatat, jadi tidak ada fungsi kasir yang berhenti karena internet mati.
+
+Teknologi yang dipakai dan letaknya:
 
 | Teknologi | Titik implementasi | Issue terkait |
 |---|---|---|
-| Jaringan Komputer | Penyimpanan lokal + sinkronisasi *queue-and-replay* ke server | #16 |
-| Kecerdasan Buatan | Klasifikasi jenis sampah dari foto (*transfer learning*, diekspor ke ONNX) dan estimasi CO2e | #20, #22, #23 |
-| Komputasi Awan | Database, API, dan dashboard dihosting di Azure | #18 |
+| C# dan WPF | Aplikasi desktop operator, sesuai ketentuan modul praktikum | #26 sampai #30 |
+| SQLite lokal | Basis data di mesin operator agar kasir jalan tanpa internet | #16 |
+| ASP.NET Core dan PostgreSQL di Azure | API dan basis data terpusat, sumber data tunggal seluruh transaksi | #14, #15, #18 |
+| Azure Custom Vision | Klasifikasi jenis sampah dari foto, layanan pihak ketiga yang disarankan modul | #20, #22 |
 
 ### Keputusan desain yang sudah dikunci
 
@@ -104,14 +115,20 @@ TRASHURY/
 Rencana penambahan (belum ada, menyusul sesuai issue):
 
 ```
-├── backend/                       # API + skema server        (#14, #15)
-├── frontend/                      # PWA kasir                 (#26-#30)
-└── ai/                            # notebook & ekspor model   (#19-#25)
+├── Trashury.sln                   # solution C#
+└── src/
+    ├── Trashury.Desktop/          # aplikasi WPF kasir        (#26-#30)
+    ├── Trashury.Api/              # ASP.NET Core Web API      (#14, #15)
+    └── Trashury.Core/             # entitas, aturan bisnis, akses data
 ```
 
-Nama folder `frontend/` sudah dipakai sebagai acuan oleh CI (variabel
-`FRONTEND_DIR` pada `.github/workflows/main.yml`). Jika folder ini nanti diberi
-nama lain, workflow harus ikut diubah.
+`Trashury.Core` sengaja dipisah agar aplikasi desktop dan API memakai kelas
+entitas serta aturan perhitungan yang sama, tidak ditulis dua kali. Bagian ini
+juga yang paling menunjukkan desain berorientasi objek, komponen yang dinilai
+tersendiri di modul praktikum.
+
+CI mencari berkas `.sln` di akar repositori. Jika nama solution atau susunan
+folder berubah, `.github/workflows/main.yml` harus ikut diubah.
 
 ## 4. Basis Data
 
@@ -191,6 +208,9 @@ Prasyarat yang sudah dipakai sekarang:
 | Git | 2.40+ | Version control |
 | SQLite | 3.40+ | Menjalankan `schema-lokal.sql` |
 | draw.io / diagrams.net | bebas | Membuka berkas `.drawio` |
+| Windows | 10 atau 11 | Menjalankan aplikasi WPF |
+| .NET SDK | 8.0 | Membangun aplikasi desktop dan API |
+| Visual Studio 2022 | Community | Perancangan antarmuka WPF |
 
 Menyalin repositori:
 
@@ -199,8 +219,10 @@ git clone https://github.com/AfiqMir/TRASHURY.git
 cd TRASHURY
 ```
 
-Prasyarat tambahan yang akan menyusul bersama kodenya: Node.js 22 (frontend
-PWA, sudah dipatok di CI) dan Python 3.11 (pelatihan model AI).
+Aplikasi WPF hanya berjalan di Windows. Anggota yang memakai macOS atau Linux
+masih dapat mengerjakan API, basis data, dan dokumentasi, tetapi membutuhkan
+mesin Windows, mesin virtual, atau komputer pinjaman untuk menjalankan dan
+menguji aplikasi desktopnya.
 
 ## 6. Alur Kerja Tim
 
@@ -222,8 +244,8 @@ PWA, sudah dipatok di CI) dan Python 3.11 (pelatihan model AI).
    ```
 
 6. CI wajib hijau. Workflow `CI TRASHURY` memeriksa keberadaan `README.md` dan
-   folder `docs/`, lalu menjalankan lint dan build frontend bila
-   `frontend/package.json` sudah ada.
+   folder `docs/`, lalu menjalankan `dotnet build` bila berkas solution sudah
+   ada di repositori.
 
 ## 7. Status Pekerjaan
 
@@ -232,7 +254,7 @@ PWA, sudah dipatok di CI) dan Python 3.11 (pelatihan model AI).
 | Rencana sprint & pemisahan MVP/stretch goal | Selesai | #6 |
 | GitHub Project & GitHub Action | Selesai | #7 |
 | User flow & wireframe lo-fi | Selesai | #9 |
-| Dataset & model klasifikasi sampah | Selesai | #19, #20 |
+| Klasifikasi sampah lewat Azure Custom Vision | Perlu ditinjau ulang | #19, #20 |
 | ERD dan skema database | Selesai | #13 |
 | Dokumentasi proyek & panduan demo | Selesai | #8 |
 | Desain UI hi-fi | Berjalan | #10 |
@@ -240,5 +262,19 @@ PWA, sudah dipatok di CI) dan Python 3.11 (pelatihan model AI).
 | Sinkronisasi offline ke online | Belum mulai | #16 |
 | Rekap & export laporan bulanan | Belum mulai | #17 |
 | Deployment Azure | Belum mulai | #18 |
-| Frontend PWA | Belum mulai | #26 sampai #30 |
+| Aplikasi desktop WPF | Belum mulai | #26 sampai #30 |
 | Integrasi & pengujian end-to-end | Belum mulai | #31 sampai #34 |
+
+## 8. Ketentuan Modul Praktikum
+
+Ketentuan berikut mengikat dan menjadi dasar keputusan teknis di atas.
+
+| Ketentuan | Konsekuensi pada proyek |
+|---|---|
+| Tema Climate Action | TRASHURY mencatat setoran sampah dan mengestimasi pengurangan emisi CO2e |
+| Aplikasi wajib ditulis dengan C# | Aplikasi desktop memakai WPF, API memakai ASP.NET Core |
+| Tipe aplikasi desktop: Windows Store, Windows Form, atau WPF | Dipilih WPF karena pemisahan tampilan dan logika paling rapi lewat XAML dan data binding |
+| Disarankan memakai basis data atau layanan web pihak ketiga | PostgreSQL di Azure sebagai basis data, Azure Custom Vision sebagai layanan klasifikasi foto |
+| Tanggung jawab: software architect, backend, front end | Pembagiannya ada di bagian 1 |
+| Produk terdokumentasi di GitHub, ada informasi akses demo dan dokumentasi penggunaan | Repositori ini, ditambah panduan demo dan panduan penggunaan yang menyusul sebelum demo |
+| Desain berorientasi objek dinilai tersendiri | Entitas dan aturan bisnis dikumpulkan di `Trashury.Core` agar dipakai bersama oleh desktop dan API |

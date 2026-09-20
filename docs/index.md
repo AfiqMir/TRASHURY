@@ -18,7 +18,9 @@
 
 ## Jenis Produk
 
-Aplikasi desktop dengan database lokal yang dapat digunakan tanpa ketergantungan internet penuh, sekaligus mendukung sinkronisasi data ke server saat koneksi tersedia.
+Aplikasi desktop Windows yang dibangun dengan bahasa C# dan Windows Presentation Foundation (WPF), sesuai ketentuan modul praktikum. Kategori aplikasi: Climate Action.
+
+Aplikasi menyimpan data pada basis data lokal sehingga dapat digunakan tanpa ketergantungan internet penuh, sekaligus mendukung sinkronisasi data ke server saat koneksi tersedia.
 
 ## Latar Belakang & Permasalahan
 
@@ -32,8 +34,8 @@ Bagaimana merancang sistem pencatatan bank sampah digital yang (1) tetap dapat d
 TRASHURY mengintegrasikan tiga teknologi pada titik implementasi yang saling melengkapi:
 
 - **Jaringan Komputer.** Transaksi setoran tetap dapat dicatat saat koneksi internet terbatas melalui penyimpanan lokal pada aplikasi desktop, yang kemudian tersinkronisasi otomatis ke server saat koneksi tersedia (*queue-and-replay*).
-- **Kecerdasan Buatan.** Model *computer vision* berbasis *transfer learning* membantu petugas mengklasifikasikan jenis sampah dari foto, sekaligus menghitung estimasi dampak lingkungan (CO2e) dari data setoran menggunakan acuan faktor emisi standar (IPCC Guidelines).
-- **Komputasi Awan.** Basis data, API backend, dan dasbor dihosting di Azure sebagai sumber data tunggal dari seluruh transaksi, sekaligus menjadi media *showcase* produk.
+- **Kecerdasan Buatan.** Layanan Azure Custom Vision membantu petugas mengklasifikasikan jenis sampah dari foto, sekaligus menghitung estimasi dampak lingkungan (CO2e) dari data setoran menggunakan acuan faktor emisi standar (IPCC Guidelines).
+- **Komputasi Awan.** Basis data PostgreSQL, API ASP.NET Core, dan dasbor dihosting di Azure sebagai sumber data tunggal dari seluruh transaksi, sekaligus menjadi media *showcase* produk.
 
 Pengembangan diprioritaskan pada fitur inti (MVP): pencatatan transaksi *offline-capable*, klasifikasi AI, dan dasbor CO2e. Fitur seperti prediksi tren volume setoran, laporan otomatis ke DLH, dan dasbor multi-lokasi menjadi pengembangan lanjutan jika waktu memungkinkan.
 

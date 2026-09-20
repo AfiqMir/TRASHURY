@@ -8,8 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  FRONTEND_DIR: frontend   # ubah jika folder kode PWA kalian berbeda
-  NODE_VERSION: "22"
+  DOTNET_VERSION: "8.0.x"
 
 jobs:
   repo-check:
@@ -25,42 +24,41 @@ jobs:
           test -d docs || { echo "::error::Folder docs (GitHub Page) tidak ditemukan"; exit 1; }
           echo "Struktur dokumentasi lengkap."
 
-  frontend-build:
-    name: Lint dan build frontend PWA
-    runs-on: ubuntu-latest
+  build:
+    name: Build aplikasi C#
+    runs-on: windows-latest
     needs: repo-check
     steps:
       - name: Checkout kode
         uses: actions/checkout@v5
 
-      - name: Cek apakah kode frontend sudah ada
+      - name: Cek apakah solution sudah ada
         id: detect
+        shell: bash
         run: |
-          if [ -f "$FRONTEND_DIR/package.json" ]; then
+          solution=$(ls *.sln 2>/dev/null | head -1)
+          if [ -n "$solution" ]; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
+            echo "solution=$solution" >> "$GITHUB_OUTPUT"
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
-            echo "::notice::$FRONTEND_DIR/package.json belum ada, build dilewati."
+            echo "::notice::Berkas solution belum ada, build dilewati."
           fi
 
-      - name: Setup Node.js
+      - name: Setup .NET
         if: steps.detect.outputs.exists == 'true'
-        uses: actions/setup-node@v5
+        uses: actions/setup-dotnet@v4
         with:
-          node-version: ${{ env.NODE_VERSION }}
+          dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Install dependency
+      - name: Restore dependency
         if: steps.detect.outputs.exists == 'true'
-        working-directory: ${{ env.FRONTEND_DIR }}
-        run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
-
-      - name: Lint
-        if: steps.detect.outputs.exists == 'true'
-        working-directory: ${{ env.FRONTEND_DIR }}
-        run: npm run lint --if-present
+        run: dotnet restore ${{ steps.detect.outputs.solution }}
 
       - name: Build
         if: steps.detect.outputs.exists == 'true'
-        working-directory: ${{ env.FRONTEND_DIR }}
-        run: npm run build --if-present
+        run: dotnet build ${{ steps.detect.outputs.solution }} --configuration Release --no-restore
+
+      - name: Test
+        if: steps.detect.outputs.exists == 'true'
+        run: dotnet test ${{ steps.detect.outputs.solution }} --configuration Release --no-build --verbosity normal

@@ -41,6 +41,7 @@ Tahap perancangan, kode aplikasi belum dimulai. Rincian per bidang ada di
 | [ERD](docs/design/erd-trashury.drawio) | Diagram relasi antarentitas (buka di [app.diagrams.net](https://app.diagrams.net)) |
 | [Skema database lokal](docs/design/schema-lokal.sql) | DDL SQLite untuk basis data di mesin operator |
 | [Skema database server](docs/design/schema-azure.sql) | DDL PostgreSQL untuk basis data terpusat di Azure |
+| [Kontrak API](docs/design/kontrak-api.md) | Spesifikasi endpoint, aturan validasi, dan bentuk galat |
 
 ## Mencoba skema database
 

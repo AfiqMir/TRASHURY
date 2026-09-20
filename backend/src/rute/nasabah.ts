@@ -12,6 +12,8 @@ import { galat } from '../galat.js';
 import { kirimDaftar, kirimObjek } from '../http/balasan.js';
 import { buatNasabah, halaman, ubahNasabah, uuid } from '../http/validasi.js';
 import { butuhPeran } from '../middleware/autentikasi.js';
+import { bukuTabungan, ringkasanSaldo } from '../db/bukuTabungan.js';
+import { saringWaktu } from '../http/validasi.js';
 
 export function ruteNasabah(basis: Basis): Router {
   const router = Router();
@@ -55,6 +57,36 @@ export function ruteNasabah(basis: Basis): Router {
       const baris = await ubahBarisNasabah(basis, id, isi);
       if (!baris) throw galat.nasabahTidakDitemukan();
       kirimObjek(res, baris);
+    } catch (kesalahan) {
+      next(kesalahan);
+    }
+  });
+
+  router.get('/:id/saldo', async (req, res, next) => {
+    try {
+      const ringkasan = await ringkasanSaldo(basis, uuid.parse(req.params.id));
+      if (!ringkasan) throw galat.nasabahTidakDitemukan();
+      kirimObjek(res, ringkasan);
+    } catch (kesalahan) {
+      next(kesalahan);
+    }
+  });
+
+  router.get('/:id/buku-tabungan', async (req, res, next) => {
+    try {
+      const id = uuid.parse(req.params.id);
+      const { page, per_page } = halaman.parse(req.query);
+      const { dari, sampai } = saringWaktu.parse(req.query);
+      if (!(await ambilNasabah(basis, id))) throw galat.nasabahTidakDitemukan();
+
+      const { baris, total } = await bukuTabungan(basis, {
+        idNasabah: id,
+        dari,
+        sampai,
+        halaman: page,
+        perHalaman: per_page,
+      });
+      kirimDaftar(res, baris, { page, per_page, total });
     } catch (kesalahan) {
       next(kesalahan);
     }

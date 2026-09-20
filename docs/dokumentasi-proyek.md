@@ -284,7 +284,7 @@ sama dengan yang dipakai di Azure.
 | Dokumentasi proyek & panduan demo | Selesai | #8 |
 | Desain UI hi-fi | Berjalan | #10 |
 | API master data nasabah dan kategori | Selesai | #14 |
-| API transaksi, penarikan, dan saldo | Berjalan | #15 |
+| API transaksi, penarikan, dan saldo | Selesai | #15 |
 | Sinkronisasi offline ke online | Belum mulai | #16 |
 | Rekap & export laporan bulanan | Belum mulai | #17 |
 | Deployment Azure | Belum mulai | #18 |

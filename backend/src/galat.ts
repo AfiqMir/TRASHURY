@@ -12,7 +12,8 @@ export type KodeGalat =
   | 'BERAT_TIDAK_SAH'
   | 'TANGGAL_TIDAK_SAH'
   | 'JUMLAH_TIDAK_SAH'
-  | 'SALDO_TIDAK_CUKUP';
+  | 'SALDO_TIDAK_CUKUP'
+  | 'TRANSAKSI_TIDAK_DITEMUKAN';
 
 export class GalatAplikasi extends Error {
   readonly status: number;
@@ -51,6 +52,22 @@ export const galat = {
     ),
   kategoriTidakDitemukan: () =>
     new GalatAplikasi(404, 'KATEGORI_TIDAK_DITEMUKAN', 'Kategori sampah tidak ditemukan.'),
+  kategoriTidakAktif: (id: string) =>
+    new GalatAplikasi(
+      422,
+      'KATEGORI_TIDAK_AKTIF',
+      'Kategori sampah tidak ditemukan atau sudah dinonaktifkan.',
+      { field: 'detail', tambahan: { id_kategori: id } },
+    ),
+  saldoTidakCukup: (saldo: number, diminta: number) =>
+    new GalatAplikasi(
+      422,
+      'SALDO_TIDAK_CUKUP',
+      `Saldo nasabah Rp${saldo.toLocaleString('id-ID')} tidak mencukupi penarikan Rp${diminta.toLocaleString('id-ID')}.`,
+      { field: 'jumlah_tarik', tambahan: { saldo_tersedia: saldo } },
+    ),
+  transaksiTidakDitemukan: () =>
+    new GalatAplikasi(404, 'TRANSAKSI_TIDAK_DITEMUKAN', 'Transaksi tidak ditemukan.'),
   kategoriSudahAda: (nama: string) =>
     new GalatAplikasi(409, 'KATEGORI_SUDAH_ADA', `Kategori "${nama}" sudah terdaftar.`, {
       field: 'nama_kategori',

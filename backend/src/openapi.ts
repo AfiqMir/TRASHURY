@@ -1,6 +1,14 @@
 import { zodToJsonSchema } from 'zod-to-json-schema';
 import type { ZodTypeAny } from 'zod';
-import { buatKategori, buatNasabah, masuk, ubahKategori, ubahNasabah } from './http/validasi.js';
+import {
+  buatKategori,
+  buatNasabah,
+  buatPenarikan,
+  buatTransaksi,
+  masuk,
+  ubahKategori,
+  ubahNasabah,
+} from './http/validasi.js';
 
 function badan(skema: ZodTypeAny) {
   return {
@@ -136,6 +144,74 @@ export const dokumenOpenApi = {
         security: bearer,
         requestBody: badan(ubahKategori),
         responses: { 200: { description: 'Kategori diperbarui' }, 404: galatResponse },
+      },
+    },
+    '/nasabah/{id}/saldo': {
+      parameters: [
+        { name: 'id', in: 'path', required: true, schema: { type: 'string', format: 'uuid' } },
+      ],
+      get: {
+        summary: 'Saldo dan total CO2e nasabah',
+        security: bearer,
+        responses: { 200: { description: 'Ringkasan saldo' }, 404: galatResponse },
+      },
+    },
+    '/nasabah/{id}/buku-tabungan': {
+      parameters: [
+        { name: 'id', in: 'path', required: true, schema: { type: 'string', format: 'uuid' } },
+        { name: 'dari', in: 'query', schema: { type: 'string', format: 'date-time' } },
+        { name: 'sampai', in: 'query', schema: { type: 'string', format: 'date-time' } },
+      ],
+      get: {
+        summary: 'Riwayat setoran dan penarikan dalam satu urutan waktu',
+        security: bearer,
+        responses: { 200: { description: 'Buku tabungan' }, 404: galatResponse },
+      },
+    },
+    '/transaksi': {
+      get: {
+        summary: 'Daftar transaksi setoran',
+        security: bearer,
+        parameters: [
+          { name: 'id_nasabah', in: 'query', schema: { type: 'string', format: 'uuid' } },
+          { name: 'dari', in: 'query', schema: { type: 'string', format: 'date-time' } },
+          { name: 'sampai', in: 'query', schema: { type: 'string', format: 'date-time' } },
+        ],
+        responses: { 200: { description: 'Daftar transaksi beserta rinciannya' } },
+      },
+      post: {
+        summary: 'Catat transaksi setoran, seluruh nilai uang dihitung server',
+        security: bearer,
+        requestBody: badan(buatTransaksi),
+        responses: {
+          201: { description: 'Transaksi tercatat' },
+          200: { description: 'Transaksi dengan identifier itu sudah tercatat' },
+          404: galatResponse,
+          422: galatResponse,
+        },
+      },
+    },
+    '/transaksi/{id}': {
+      parameters: [
+        { name: 'id', in: 'path', required: true, schema: { type: 'string', format: 'uuid' } },
+      ],
+      get: {
+        summary: 'Detail transaksi beserta rinciannya',
+        security: bearer,
+        responses: { 200: { description: 'Detail transaksi' }, 404: galatResponse },
+      },
+    },
+    '/penarikan': {
+      post: {
+        summary: 'Proses penarikan saldo, ditolak bila melebihi saldo',
+        security: bearer,
+        requestBody: badan(buatPenarikan),
+        responses: {
+          201: { description: 'Penarikan tercatat' },
+          200: { description: 'Penarikan dengan identifier itu sudah tercatat' },
+          404: galatResponse,
+          422: galatResponse,
+        },
       },
     },
   },

@@ -43,6 +43,47 @@ export const ubahKategori = z
     message: 'Tidak ada isian yang diubah.',
   });
 
+const waktuIso = z
+  .string()
+  .datetime({ offset: false, message: 'Tanggal harus ISO-8601 UTC berakhiran Z.' });
+
+const BATAS_MAJU_JAM = 24;
+
+const tanggalTransaksi = waktuIso.refine(
+  (nilai) => new Date(nilai).getTime() <= Date.now() + BATAS_MAJU_JAM * 3600 * 1000,
+  { message: `Tanggal tidak boleh lebih dari ${BATAS_MAJU_JAM} jam di masa depan.` },
+);
+
+export const detailSetoran = z.object({
+  id_detail: uuid.optional(),
+  id_kategori: uuid,
+  berat_kg: z.number().positive('Berat harus lebih dari nol.').max(10_000),
+  url_foto_sampah: z.string().max(500).nullish(),
+  sumber_klasifikasi: z.enum(['ai', 'manual']).optional(),
+});
+
+export const buatTransaksi = z.object({
+  id_transaksi: uuid,
+  id_nasabah: uuid,
+  tanggal: tanggalTransaksi,
+  detail: z.array(detailSetoran).min(1, 'Transaksi harus memiliki setidaknya satu rincian.'),
+});
+
+export const buatPenarikan = z.object({
+  id_penarikan: uuid,
+  id_nasabah: uuid,
+  tanggal: tanggalTransaksi,
+  jumlah_tarik: z
+    .number()
+    .int('Jumlah tarik harus bilangan bulat rupiah.')
+    .positive('Jumlah tarik harus lebih dari nol.'),
+});
+
+export const saringWaktu = z.object({
+  dari: waktuIso.optional(),
+  sampai: waktuIso.optional(),
+});
+
 export const masuk = z.object({
   username: z.string().trim().min(1, 'Username wajib diisi.'),
   password: z.string().min(1, 'Kata sandi wajib diisi.'),

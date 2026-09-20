@@ -123,6 +123,7 @@ nama lain, workflow harus ikut diubah.
 | `docs/design/erd-trashury.drawio` | Diagram ERD. Buka di <https://app.diagrams.net> lewat menu File, Open From, Device, atau pakai ekstensi Draw.io Integration di VS Code. |
 | `docs/design/schema-lokal.sql` | DDL SQLite untuk database di mesin operator. |
 | `docs/design/schema-azure.sql` | DDL PostgreSQL untuk Azure Database for PostgreSQL, sumber data tunggal seluruh unit. |
+| `docs/design/kontrak-api.md` | Spesifikasi endpoint API untuk #14 dan #15, berlaku untuk framework apa pun. |
 
 Enam entitas: `nasabah`, `operator`, `kategori_sampah`, `transaksi`,
 `detail_transaksi`, `penarikan_saldo`. Dua view disiapkan untuk kebutuhan

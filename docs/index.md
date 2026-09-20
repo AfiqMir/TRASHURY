@@ -176,3 +176,4 @@ Keterangan: `X` menunjukkan pertemuan ketika kegiatan dikerjakan.
 - [ERD TRASHURY (.drawio)](design/erd-trashury.drawio): diagram relasi antarentitas.
 - [Skema Database Lokal (.sql)](design/schema-lokal.sql): DDL SQLite untuk basis data di mesin operator.
 - [Skema Database Server (.sql)](design/schema-azure.sql): DDL PostgreSQL untuk basis data terpusat di Azure.
+- [Kontrak API](design/kontrak-api.md): spesifikasi endpoint, aturan validasi, dan bentuk galat untuk API transaksi dan master data.

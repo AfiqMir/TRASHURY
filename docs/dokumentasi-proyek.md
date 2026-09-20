@@ -4,13 +4,13 @@ title: Dokumentasi Proyek TRASHURY
 
 # Dokumentasi Proyek TRASHURY
 
-> Dokumen kerja internal kelompok. Status per **17 September 2026**: tahap
-> perancangan selesai sebagian, implementasi kode aplikasi **belum dimulai**.
-> Bagian yang menjelaskan struktur kode ditandai sebagai *rencana* dan wajib
-> diperbarui begitu folder `backend/` dan `frontend/` benar-benar dibuat.
+Dokumen kerja internal kelompok. Status per 17 September 2026: tahap
+perancangan selesai sebagian, implementasi kode aplikasi belum dimulai. Bagian
+yang menjelaskan struktur kode masih berupa rencana dan wajib diperbarui begitu
+folder `backend/` dan `frontend/` benar-benar dibuat.
 
 Ringkasan produk, latar belakang, analisis kompetitor, dan perancangan SDLC
-tahap 1–3 ada di [halaman utama](index.md). Dokumen ini melengkapinya dengan
+tahap 1-3 ada di [halaman utama](index.md). Dokumen ini melengkapinya dengan
 hal-hal teknis: arsitektur, struktur repositori, cara menyiapkan lingkungan
 kerja, dan konvensi kerja tim.
 
@@ -24,7 +24,7 @@ kerja, dan konvensi kerja tim.
 | Repositori | <https://github.com/AfiqMir/TRASHURY> |
 | Halaman publik | <https://afiqmir.github.io/TRASHURY/> |
 
-**Kelompok Keren**
+Kelompok Keren.
 
 | Peran | Nama | NIM | Akun GitHub | Fokus pengerjaan |
 |---|---|---|---|---|
@@ -68,17 +68,18 @@ Tiga teknologi yang diintegrasikan sesuai ketentuan mata kuliah:
 
 ### Keputusan desain yang sudah dikunci
 
-1. **Identifier berupa UUID yang dibuat di sisi klien.** Beberapa mesin operator
-   bisa mencatat transaksi secara offline pada waktu bersamaan; ID auto-increment
-   akan bentrok saat semuanya menyinkronkan data ke server yang sama.
-2. **Nilai uang disimpan sebagai `INTEGER` rupiah bulat**, bukan `FLOAT`, supaya
+1. Identifier berupa UUID yang dibuat di sisi klien. Beberapa mesin operator
+   bisa mencatat transaksi secara offline pada waktu bersamaan; ID
+   auto-increment akan bentrok saat semuanya menyinkronkan data ke server yang
+   sama.
+2. Nilai uang disimpan sebagai `INTEGER` rupiah bulat, bukan `FLOAT`, supaya
    saldo tabungan nasabah tidak pernah meleset karena pembulatan.
-3. **Waktu disimpan sebagai teks ISO-8601 UTC.** Formatnya urut secara leksikal,
+3. Waktu disimpan sebagai teks ISO-8601 UTC. Formatnya urut secara leksikal,
    jadi bisa diurutkan dan difilter per bulan (`substr(tanggal, 1, 7)`) tanpa
    fungsi tanggal khusus.
-4. **Saldo nasabah dijaga oleh trigger database**, bukan oleh kode aplikasi,
-   agar buku tabungan tetap konsisten walau aplikasi tertutup paksa.
-5. **Setiap baris transaksional membawa `sync_status` dan `synced_at`**, sehingga
+4. Saldo nasabah dijaga oleh trigger database, bukan oleh kode aplikasi, agar
+   buku tabungan tetap konsisten walau aplikasi tertutup paksa.
+5. Setiap baris transaksional membawa `sync_status` dan `synced_at`, sehingga
    proses sinkronisasi cukup mengambil baris yang belum terkirim.
 
 ## 3. Struktur Repositori
@@ -114,13 +115,11 @@ nama lain, workflow harus ikut diubah.
 
 ## 4. Basis Data
 
-- **Diagram:** `docs/design/erd-trashury.drawio` — buka di
-  <https://app.diagrams.net> (File → Open From → Device) atau ekstensi
-  *Draw.io Integration* di VS Code.
-- **Skema lokal:** `docs/design/schema-lokal.sql` — DDL SQLite untuk database
-  di mesin operator.
-- **Skema server:** `docs/design/schema-azure.sql` — DDL PostgreSQL untuk
-  Azure Database for PostgreSQL, sumber data tunggal seluruh unit.
+| Berkas | Isi |
+|---|---|
+| `docs/design/erd-trashury.drawio` | Diagram ERD. Buka di <https://app.diagrams.net> lewat menu File, Open From, Device, atau pakai ekstensi Draw.io Integration di VS Code. |
+| `docs/design/schema-lokal.sql` | DDL SQLite untuk database di mesin operator. |
+| `docs/design/schema-azure.sql` | DDL PostgreSQL untuk Azure Database for PostgreSQL, sumber data tunggal seluruh unit. |
 
 Enam entitas: `nasabah`, `operator`, `kategori_sampah`, `transaksi`,
 `detail_transaksi`, `penarikan_saldo`. Dua view disiapkan untuk kebutuhan
@@ -140,17 +139,17 @@ yang memang harus berbeda:
 
 | Aspek | Lokal (SQLite) | Server (PostgreSQL) |
 |---|---|---|
-| Identifier | `TEXT` berisi UUID buatan klien | `UUID` native; tabel master boleh `gen_random_uuid()`, tabel transaksional **wajib** memakai UUID kiriman klien |
+| Identifier | `TEXT` berisi UUID buatan klien | `UUID` native; tabel master boleh `gen_random_uuid()`, tabel transaksional wajib memakai UUID kiriman klien |
 | Uang | `INTEGER` rupiah | `BIGINT` rupiah |
-| Berat & CO2e | `REAL` | `NUMERIC(10,2)` dan `NUMERIC(12,4)` — presisi pasti, tidak ada galat pembulatan biner pada angka laporan |
+| Berat & CO2e | `REAL` | `NUMERIC(10,2)` dan `NUMERIC(12,4)`, presisi pasti tanpa galat pembulatan biner pada angka laporan |
 | Waktu | `TEXT` ISO-8601 UTC | `TIMESTAMPTZ` |
 | Boolean | `INTEGER` 0/1 | `BOOLEAN` |
-| Status sinkronisasi | `sync_status`, `synced_at` | tidak ada — diganti `diterima_at` |
+| Status sinkronisasi | `sync_status`, `synced_at` | tidak ada, diganti `diterima_at` |
 
 Kolom `sync_status` sengaja tidak ikut ke server: statusnya adalah urusan
 masing-masing klien, dan server tidak perlu tahu sebuah baris dulu sempat
 mengantre berapa lama. Sebagai gantinya server mencatat `diterima_at`, yaitu
-kapan baris itu betul-betul sampai — selisihnya terhadap `tanggal` sekaligus
+kapan baris itu betul-betul sampai. Selisihnya terhadap `tanggal` sekaligus
 menjadi bukti terukur bahwa mekanisme offline memang bekerja, dan itu angka
 yang enak ditunjukkan saat demo.
 
@@ -158,7 +157,7 @@ yang enak ditunjukkan saat demo.
 
 Karena primary key transaksi dibuat di klien, server dapat menerima kiriman
 yang sama berkali-kali tanpa menggandakan data. Inilah yang membuat
-*queue-and-replay* (#16) aman ketika koneksi terputus di tengah pengiriman dan
+queue-and-replay (#16) aman ketika koneksi terputus di tengah pengiriman dan
 klien mencoba lagi:
 
 ```sql
@@ -173,12 +172,15 @@ DO NOTHING` ini, bukan `INSERT` polos. Satu transaksi beserta seluruh
 detailnya juga harus dikirim dalam satu transaksi database, supaya tidak
 pernah ada transaksi yang tersimpan tanpa detailnya.
 
-> Catatan revisi terhadap ERD di halaman utama: entitas **Detail Transaksi**
-> kini memuat `id_kategori` sebagai *foreign key*. Tanpa kolom itu relasi
-> "satu kategori sampah dipakai di banyak detail transaksi" tidak dapat
-> direalisasikan. Kolom `sumber_klasifikasi` juga ditambahkan untuk mencatat
-> apakah kategori dipilih oleh model AI atau dikoreksi manual oleh operator —
-> data ini nantinya berguna untuk mengevaluasi akurasi model di lapangan (#21).
+### Revisi terhadap ERD di halaman utama
+
+Entitas Detail Transaksi kini memuat `id_kategori` sebagai foreign key. Tanpa
+kolom itu relasi "satu kategori sampah dipakai di banyak detail transaksi"
+tidak dapat direalisasikan.
+
+Kolom `sumber_klasifikasi` juga ditambahkan untuk mencatat apakah kategori
+dipilih oleh model AI atau dikoreksi manual oleh operator. Data ini nantinya
+berguna untuk mengevaluasi akurasi model di lapangan (#21).
 
 ## 5. Menyiapkan Lingkungan Kerja
 
@@ -188,7 +190,7 @@ Prasyarat yang sudah dipakai sekarang:
 |---|---|---|
 | Git | 2.40+ | Version control |
 | SQLite | 3.40+ | Menjalankan `schema-lokal.sql` |
-| draw.io / diagrams.net | — | Membuka berkas `.drawio` |
+| draw.io / diagrams.net | bebas | Membuka berkas `.drawio` |
 
 Menyalin repositori:
 
@@ -202,18 +204,25 @@ PWA, sudah dipatok di CI) dan Python 3.11 (pelatihan model AI).
 
 ## 6. Alur Kerja Tim
 
-1. **Issue dulu.** Semua pekerjaan berangkat dari issue di GitHub Project
-   kelompok. Ambil issue yang sudah di-*assign* ke kamu dan pindahkan ke
-   kolom *In Progress* sebelum mulai.
-2. **Satu branch per anggota**, dinamai dengan NIM: `545092`, `537942`,
-   `541599`. Untuk pekerjaan besar, boleh pakai turunan seperti
-   `545092-erd-dokumentasi`.
-3. **Pesan commit** memakai awalan jenis perubahan: `feat:`, `fix:`, `docs:`,
+1. Semua pekerjaan berangkat dari issue di GitHub Project kelompok. Ambil
+   issue yang sudah di-*assign* ke kamu dan pindahkan ke kolom In Progress
+   sebelum mulai.
+2. Satu branch per anggota, dinamai dengan NIM: `545092`, `537942`, `541599`.
+   Kerjakan semuanya di branch itu, jangan membuat branch turunan per tugas.
+3. Pesan commit memakai awalan jenis perubahan: `feat:`, `fix:`, `docs:`,
    `chore:`, `refactor:`. Contoh: `docs: add ERD and local database schema`.
-4. **Pull request ke `main`**, disertai keterangan `Closes #<nomor issue>`.
-   Minta minimal satu anggota lain me-*review* sebelum di-*merge*.
-5. **CI wajib hijau.** Workflow `CI TRASHURY` memeriksa keberadaan `README.md`
-   dan folder `docs/`, lalu menjalankan lint dan build frontend bila
+4. Pull request dari branch anggota ke `main`, disertai keterangan
+   `Closes #<nomor issue>`. Minta minimal satu anggota lain me-*review*
+   sebelum di-*merge*.
+5. Setelah PR di-merge, samakan kembali branch anggota dengan `main` supaya
+   tidak tertinggal:
+
+   ```bash
+   git push origin origin/main:refs/heads/545092
+   ```
+
+6. CI wajib hijau. Workflow `CI TRASHURY` memeriksa keberadaan `README.md` dan
+   folder `docs/`, lalu menjalankan lint dan build frontend bila
    `frontend/package.json` sudah ada.
 
 ## 7. Status Pekerjaan
@@ -228,8 +237,8 @@ PWA, sudah dipatok di CI) dan Python 3.11 (pelatihan model AI).
 | Dokumentasi proyek & panduan demo | Selesai | #8 |
 | Desain UI hi-fi | Berjalan | #10 |
 | API master data & transaksi | Belum mulai | #14, #15 |
-| Sinkronisasi offline→online | Belum mulai | #16 |
+| Sinkronisasi offline ke online | Belum mulai | #16 |
 | Rekap & export laporan bulanan | Belum mulai | #17 |
 | Deployment Azure | Belum mulai | #18 |
-| Frontend PWA | Belum mulai | #26–#30 |
-| Integrasi & pengujian end-to-end | Belum mulai | #31–#34 |
+| Frontend PWA | Belum mulai | #26 sampai #30 |
+| Integrasi & pengujian end-to-end | Belum mulai | #31 sampai #34 |

@@ -13,23 +13,22 @@ yang stabil.
 
 TRASHURY menjawabnya dengan tiga hal sekaligus dalam satu produk:
 
-- **Tetap jalan tanpa internet** — transaksi dicatat ke basis data lokal, lalu
-  menyusul terkirim ke server begitu koneksi tersedia (*queue-and-replay*).
-- **Klasifikasi sampah dibantu AI** — petugas memotret sampah, model
-  *computer vision* mengusulkan kategorinya.
-- **Estimasi CO2e otomatis** — berat setoran dikonversi menjadi estimasi
-  pengurangan emisi memakai faktor acuan IPCC, siap dipakai untuk pelaporan
-  bulanan ke DLH.
+1. Tetap jalan tanpa internet. Transaksi dicatat ke basis data lokal, lalu
+   menyusul terkirim ke server begitu koneksi tersedia.
+2. Klasifikasi sampah dibantu AI. Petugas memotret sampah, model computer
+   vision mengusulkan kategorinya.
+3. Estimasi CO2e otomatis. Berat setoran dikonversi menjadi estimasi
+   pengurangan emisi memakai faktor acuan IPCC, siap dipakai untuk pelaporan
+   bulanan ke DLH.
 
 ## Status
 
-Tahap perancangan. **Kode aplikasi belum dimulai** — lihat
-[status pekerjaan](docs/dokumentasi-proyek.md#7-status-pekerjaan) untuk rincian
-per bidang.
+Tahap perancangan, kode aplikasi belum dimulai. Rincian per bidang ada di
+[status pekerjaan](docs/dokumentasi-proyek.md#7-status-pekerjaan).
 
 | Sudah ada | Belum ada |
 |---|---|
-| Perancangan SDLC tahap 1–3, ERD, skema database lokal, dokumentasi, panduan demo, CI | Backend API, frontend PWA, integrasi model AI, deployment Azure |
+| Perancangan SDLC tahap 1-3, ERD, skema database lokal, dokumentasi, panduan demo, CI | Backend API, frontend PWA, integrasi model AI, deployment Azure |
 
 ## Dokumentasi
 
@@ -58,8 +57,8 @@ sebelum di-merge. Selengkapnya di
 
 ## Tim
 
-**Kelompok Keren** — Senior Project TI, Departemen Teknologi Elektro dan
-Teknologi Informasi, Fakultas Teknik, Universitas Gadjah Mada.
+Kelompok Keren, Senior Project TI, Departemen Teknologi Elektro dan Teknologi
+Informasi, Fakultas Teknik, Universitas Gadjah Mada.
 
 | Peran | Nama | NIM | Fokus |
 |---|---|---|---|

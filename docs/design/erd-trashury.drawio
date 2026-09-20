@@ -4,7 +4,7 @@
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="judul" value="ERD TRASHURY — Aplikasi Kasir Bank Sampah Kalurahan" style="text;html=1;fontSize=20;fontStyle=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+        <mxCell id="judul" value="ERD TRASHURY: Aplikasi Kasir Bank Sampah Kalurahan" style="text;html=1;fontSize=20;fontStyle=1;align=left;verticalAlign=middle;strokeColor=none;fillColor=none;" vertex="1" parent="1">
           <mxGeometry x="40" y="10" width="900" height="40" as="geometry" />
         </mxCell>
         <mxCell id="nasabah" value="nasabah" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;html=1;fillColor=#E8F4FF;strokeColor=#3B7DD8;fontColor=#1B1B1B;" vertex="1" parent="1">
@@ -193,7 +193,7 @@
             <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="transaksi-r1-c1" value="id_nasabah → nasabah" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r1">
+        <mxCell id="transaksi-r1-c1" value="id_nasabah ke nasabah" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r1">
           <mxGeometry x="44" width="276" height="26" as="geometry">
             <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -206,7 +206,7 @@
             <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="transaksi-r2-c1" value="id_operator → operator" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r2">
+        <mxCell id="transaksi-r2-c1" value="id_operator ke operator" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="transaksi-r2">
           <mxGeometry x="44" width="276" height="26" as="geometry">
             <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -313,7 +313,7 @@
             <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="penarikan_saldo-r1-c1" value="id_nasabah → nasabah" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r1">
+        <mxCell id="penarikan_saldo-r1-c1" value="id_nasabah ke nasabah" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r1">
           <mxGeometry x="44" width="276" height="26" as="geometry">
             <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -326,7 +326,7 @@
             <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="penarikan_saldo-r2-c1" value="id_operator → operator" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r2">
+        <mxCell id="penarikan_saldo-r2-c1" value="id_operator ke operator" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="penarikan_saldo-r2">
           <mxGeometry x="44" width="276" height="26" as="geometry">
             <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -420,7 +420,7 @@
             <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="detail_transaksi-r1-c1" value="id_transaksi → transaksi" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r1">
+        <mxCell id="detail_transaksi-r1-c1" value="id_transaksi ke transaksi" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r1">
           <mxGeometry x="44" width="276" height="26" as="geometry">
             <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
           </mxGeometry>
@@ -433,7 +433,7 @@
             <mxRectangle x="0" width="44" height="26" as="alternateBounds" />
           </mxGeometry>
         </mxCell>
-        <mxCell id="detail_transaksi-r2-c1" value="id_kategori → kategori_sampah" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r2">
+        <mxCell id="detail_transaksi-r2-c1" value="id_kategori ke kategori_sampah" style="shape=partialRectangle;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;html=1;fontSize=11;" vertex="1" parent="detail_transaksi-r2">
           <mxGeometry x="44" width="276" height="26" as="geometry">
             <mxRectangle x="44" width="276" height="26" as="alternateBounds" />
           </mxGeometry>

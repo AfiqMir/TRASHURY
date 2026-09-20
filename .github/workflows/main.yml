@@ -36,7 +36,7 @@ jobs:
         id: detect
         shell: bash
         run: |
-          solution=$(ls *.sln 2>/dev/null | head -1)
+          solution=$(find . -maxdepth 1 -name '*.sln' -print -quit)
           if [ -n "$solution" ]; then
             echo "exists=true" >> "$GITHUB_OUTPUT"
             echo "solution=$solution" >> "$GITHUB_OUTPUT"

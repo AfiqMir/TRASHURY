@@ -40,6 +40,7 @@ per bidang.
 | [Panduan demo](docs/panduan-demo.md) | Naskah peragaan, checklist persiapan, rencana cadangan |
 | [ERD](docs/design/erd-trashury.drawio) | Diagram relasi antarentitas (buka di [app.diagrams.net](https://app.diagrams.net)) |
 | [Skema database lokal](docs/design/schema-lokal.sql) | DDL SQLite untuk basis data di mesin operator |
+| [Skema database server](docs/design/schema-azure.sql) | DDL PostgreSQL untuk basis data terpusat di Azure |
 
 ## Mencoba skema database
 

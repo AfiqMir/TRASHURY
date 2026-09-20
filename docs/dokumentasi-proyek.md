@@ -20,17 +20,20 @@ kerja, dan konvensi kerja tim.
 |---|---|
 | Nama produk | TRASHURY |
 | Mata kuliah | Senior Project TI |
+| Jenis produk | Aplikasi web progresif (PWA) yang dapat dipasang di desktop operator |
 | Instansi | Departemen Teknologi Elektro dan Teknologi Informasi, FT UGM |
 | Repositori | <https://github.com/AfiqMir/TRASHURY> |
 | Halaman publik | <https://afiqmir.github.io/TRASHURY/> |
 
-Kelompok Keren.
+Kelompok Keren. Modul praktikum menyediakan lima peran: Project Manager,
+UIUX Designer, Software Engineer, AI Engineer, dan Cloud Engineer. Karena
+anggota hanya tiga orang, sebagian anggota memegang lebih dari satu peran.
 
-| Peran | Nama | NIM | Akun GitHub | Fokus pengerjaan |
+| Nama | NIM | Akun GitHub | Peran | Cakupan |
 |---|---|---|---|---|
-| Ketua | Wangsit Nursyahada | 24/545092/TK/60594 | `wngstnr-code` | Basis data, API backend, sinkronisasi, deployment Azure, dokumentasi |
-| Anggota | Muhammad Afiq Mirza Choiruzan | 24/537942/TK/59646 | `AfiqMir` | Model AI klasifikasi sampah, logika CO2e, forecasting |
-| Anggota | Bintang Daneswara | 24/541599/TK/60084 | `bintangdanes` | Desain UI, frontend PWA, pengujian usability |
+| Wangsit Nursyahada | 24/545092/TK/60594 | `wngstnr-code` | Project Manager, Cloud Engineer | Rencana dan pemantauan proyek, basis data, API, sinkronisasi, deployment Azure, dokumentasi |
+| Muhammad Afiq Mirza Choiruzan | 24/537942/TK/59646 | `AfiqMir` | AI Engineer | Ketersediaan dan kelayakan data, model klasifikasi sampah, logika perhitungan CO2e |
+| Bintang Daneswara | 24/541599/TK/60084 | `bintangdanes` | UIUX Designer, Software Engineer | Desain antarmuka, pengembangan frontend PWA, pengujian usability |
 
 ## 2. Arsitektur Sistem
 
@@ -242,3 +245,26 @@ PWA, sudah dipatok di CI) dan Python 3.11 (pelatihan model AI).
 | Deployment Azure | Belum mulai | #18 |
 | Frontend PWA | Belum mulai | #26 sampai #30 |
 | Integrasi & pengujian end-to-end | Belum mulai | #31 sampai #34 |
+
+## 8. Ketentuan Modul Praktikum
+
+Modul Senior Project TI mewajibkan produk mengimplementasikan tiga teknologi
+sekaligus. Ketiganya dinilai terpisah dan berbobot sama, jadi tidak boleh ada
+satu pun yang dikerjakan setengah-setengah.
+
+| Kriteria penilaian produk akhir | Bobot | Letaknya di TRASHURY |
+|---|---|---|
+| Rumusan permasalahan dan solusi | 10% | Latar belakang dan rumusan masalah di [halaman utama](index.md) |
+| Implementasi jaringan komputer | 20% | Pencatatan lokal saat koneksi terbatas dan sinkronisasi queue-and-replay ke server (#16) |
+| Implementasi komputasi awan | 20% | Basis data PostgreSQL, API, dan dasbor di Azure (#18) |
+| Implementasi kecerdasan buatan | 20% | Klasifikasi jenis sampah dari foto dan estimasi CO2e (#20 sampai #23) |
+| Demo produk berjalan lancar | 5% | [Panduan demo](panduan-demo.md) |
+
+Penilaian proses juga memuat komponen dokumentasi sebesar 20%, yang menuntut
+tiga hal: riwayat pengembangan terdokumentasi lewat Git, penjelasan singkat
+penggunaan produk, dan panduan untuk melakukan demo. Dua yang pertama dipenuhi
+oleh repositori ini beserta README, yang ketiga oleh panduan demo. Panduan
+penggunaan produk untuk operator masih harus ditulis begitu antarmukanya jadi.
+
+Produk akhir akan dideploy pada akun Azure milik departemen sebagai showcase,
+sehingga #18 bukan sekadar kebutuhan teknis melainkan syarat penilaian.

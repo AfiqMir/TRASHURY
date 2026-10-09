@@ -167,9 +167,32 @@ Hasil dibulatkan hingga 4 desimal menggunakan fungsi [`bulatkanCo2e`](../shared/
 
 ---
 
-## 8. Verifikasi & Pengujian Kode
-Seluruh logika kalkulasi dan pemetaan kelas model telah diverifikasi melalui pengujian otomatis Vitest:
+## 8. Metodologi Peramalan Volume Setoran (*Time-Series Forecasting*, #25)
+
+Untuk membantu pengurus bank sampah dalam perencanaan kapasitas gudang depo, pemesanan truk pengangkut pengepul, dan estimasi kesiapan dana kas operasional, TRASHURY dilengkapi mesin peramalan deret waktu (*time-series forecasting engine*).
+
+### 8.1 Model & Algoritma
+Mesin peramalan pada [`shared/src/forecasting.ts`](../shared/src/forecasting.ts) mengombinasikan dua metode statistik:
+1. **Holt's Linear Exponential Smoothing ($N \ge 3\text{ bulan}$):**
+   * Menyesuaikan nilai dasar (*Level* $L_t$) dan kemiringan tren (*Trend* $T_t$) dengan parameter pemulusan $\alpha = 0.5$ dan $\beta = 0.3$:
+     $$L_t = \alpha Y_t + (1 - \alpha)(L_{t-1} + T_{t-1})$$
+     $$T_t = \beta(L_t - L_{t-1}) + (1 - \beta)T_{t-1}$$
+     $$\hat{Y}_{t+h} = L_t + h \cdot T_t$$
+2. **Regresi Linear & Weighted Moving Average ($N < 3\text{ bulan}$):**
+   * Sebagai *fallback* saat bank sampah baru beroperasi dan data historis masih terbatas (*cold start*).
+
+### 8.2 Estimasi Multi-Dimensi (Beban Fisik, Finansial, dan Lingkungan)
+Setiap angka proyeksi berat ($\text{kg}$) untuk $h$ bulan mendatang secara otomatis dikonversikan menjadi:
+* **Estimasi Kas Uang:** $\hat{Y} \times \text{harga\_per\_kg}$ (kebutuhan kas penarikan).
+* **Estimasi Reduksi Karbon:** $\hat{Y} \times \text{faktor\_co2e\_per\_kg}$ (target emisi hijau DLH).
+* **Interval Ketidakpastian (Error Margin):** Menghitung batas bawah dan batas atas $\pm \text{RMSE}$ (*Root Mean Square Error*).
+
+---
+
+## 9. Verifikasi & Pengujian Kode
+Seluruh logika kalkulasi, pemetaan model AI, dan mesin forecasting telah diverifikasi melalui pengujian otomatis Vitest:
 * [`shared/src/perhitungan.test.ts`](../shared/src/perhitungan.test.ts)
 * [`shared/src/kategoriSampah.test.ts`](../shared/src/kategoriSampah.test.ts)
+* [`shared/src/forecasting.test.ts`](../shared/src/forecasting.test.ts)
 
-Hasil pengujian: **100% lulus (60/60 tests passing)** pada CI.
+Hasil pengujian: **100% lulus (65/65 tests passing)** pada CI.

@@ -300,7 +300,7 @@ dari seluruh 50 pengujian `npm test` dan hanya muncul di `npm run smoke`.
 | API master data nasabah dan kategori | Selesai | #14 |
 | API transaksi, penarikan, dan saldo | Selesai | #15 |
 | Sinkronisasi offline ke online | Belum mulai | #16 |
-| Rekap & export laporan bulanan | Belum mulai | #17 |
+| Rekap & export laporan bulanan | Selesai | #17 |
 | Deployment Azure | Belum mulai | #18 |
 | Frontend PWA | Belum mulai | #26 sampai #30 |
 | Integrasi & pengujian end-to-end | Belum mulai | #31 sampai #34 |

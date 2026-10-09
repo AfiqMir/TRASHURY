@@ -4,8 +4,9 @@ title: Kontrak API TRASHURY
 
 # Kontrak API TRASHURY
 
-Spesifikasi endpoint untuk issue #14 (master data nasabah dan kategori sampah)
-dan #15 (transaksi setoran, penarikan, dan saldo). Dokumen ini mengikat kedua
+Spesifikasi endpoint untuk issue #14 (master data nasabah dan kategori sampah),
+#15 (transaksi setoran, penarikan, dan saldo), dan #17 (rekap laporan
+bulanan). Dokumen ini mengikat kedua
 sisi: backend wajib memenuhinya, frontend boleh merancang layar berbekal
 dokumen ini tanpa menunggu backend selesai.
 
@@ -336,7 +337,83 @@ view `v_buku_tabungan`. Mendukung `dari`, `sampai`, `page`, dan `per_page`.
 Penarikan bernilai negatif supaya klien dapat menjumlahkan kolom `nominal`
 begitu saja tanpa memeriksa jenisnya.
 
-## 9. Catatan untuk Pelaksana
+## 9. Rekap Laporan Bulanan (#17, FR 8)
+
+### GET /laporan/bulanan
+
+| Parameter | Wajib | Keterangan |
+|---|---|---|
+| `bulan` | ya | Bentuk `YYYY-MM`, contoh `2026-09` |
+| `format` | tidak | `json` (bawaan), `csv`, atau `pdf` |
+
+Bulan dihitung menurut WIB (`Asia/Jakarta`), bukan UTC. Bank sampah dan DLH
+bekerja dengan kalender setempat, sehingga setoran pukul 00.30 WIB tanggal 1
+Oktober tercatat sebagai `2026-09-30T17:30:00Z` tetapi harus masuk rekap
+Oktober. Batas yang dipakai dikembalikan di `dari` (inklusif) dan `sampai`
+(eksklusif).
+
+Balasan `200` untuk `format=json`:
+
+```json
+{
+  "bulan": "2026-09",
+  "zona_waktu": "Asia/Jakarta",
+  "dari": "2026-08-31T17:00:00Z",
+  "sampai": "2026-09-30T17:00:00Z",
+  "ringkasan": {
+    "jumlah_setoran": 2,
+    "jumlah_nasabah_menyetor": 2,
+    "total_berat_kg": 4.75,
+    "total_nilai_rupiah": 12750,
+    "total_co2e_kg": 6.075,
+    "jumlah_penarikan": 1,
+    "total_penarikan_rupiah": 5000
+  },
+  "per_kategori": [
+    {
+      "nama_kategori": "Kertas",
+      "jumlah_setoran": 1,
+      "total_berat_kg": 1.5,
+      "total_nilai_rupiah": 3000,
+      "total_co2e_kg": 1.2
+    }
+  ],
+  "dibuat_pada": "2026-10-09T05:00:00Z"
+}
+```
+
+`jumlah_setoran` pada `per_kategori` menghitung transaksi yang memuat kategori
+tersebut. Satu transaksi bisa berisi beberapa kategori, jadi jumlahnya per
+kategori tidak selalu sama dengan `ringkasan.jumlah_setoran`.
+
+Bulan tanpa transaksi tetap dibalas `200` dengan seluruh angka bernilai `0` dan
+`per_kategori` kosong.
+
+`format=csv` mengirim berkas `rekap-bulanan-YYYY-MM.csv` dengan pemisah koma,
+desimal titik, akhir baris CRLF, dan BOM UTF-8 supaya Excel membaca huruf
+dengan benar. Satu baris per kategori, ditutup baris `TOTAL`:
+
+```
+bulan,nama_kategori,jumlah_setoran,total_berat_kg,total_nilai_rupiah,total_co2e_kg
+2026-09,Kertas,1,1.50,3000,1.2000
+2026-09,Plastik PET,2,3.25,9750,4.8750
+2026-09,TOTAL,2,4.75,12750,6.0750
+```
+
+Nama kategori yang diawali `=`, `+`, `-`, atau `@` diberi awalan `'` supaya
+tidak dijalankan sebagai rumus saat dibuka di aplikasi lembar kerja.
+
+`format=pdf` mengirim berkas `rekap-bulanan-YYYY-MM.pdf` berukuran A4 berisi
+ringkasan dan tabel rincian per kategori, siap dicetak dan diserahkan ke DLH.
+
+| Aturan | Kode galat | Status |
+|---|---|---|
+| `bulan` tidak ada atau tidak berbentuk `YYYY-MM` | `PERMINTAAN_TIDAK_SAH` | `400` |
+| `format` di luar `json`, `csv`, `pdf` | `PERMINTAAN_TIDAK_SAH` | `400` |
+
+Kedua peran, `operator` dan `pengurus`, boleh mengakses laporan.
+
+## 10. Catatan untuk Pelaksana
 
 Yang perlu disepakati sebelum endpoint dianggap selesai:
 
@@ -352,7 +429,7 @@ Endpoint sinkronisasi massal untuk #16 belum termasuk dalam dokumen ini dan
 akan disusun tersendiri. Sifat aman diulang pada endpoint di atas sudah
 disiapkan untuk keperluan tersebut.
 
-## 10. Pembuktian Perilaku Serentak
+## 11. Pembuktian Perilaku Serentak
 
 Penguncian baris pada penarikan sudah dibuktikan pada PostgreSQL sungguhan,
 bukan hanya pada PGlite. Tiga penarikan dikirim bersamaan terhadap saldo yang

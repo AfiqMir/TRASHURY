@@ -296,6 +296,7 @@ dari seluruh 50 pengujian `npm test` dan hanya muncul di `npm run smoke`.
 | Dataset & model klasifikasi sampah | Selesai | #19, #20 |
 | Evaluasi & ekspor model ONNX (YOLOv8 & EfficientNet) | Selesai | #21, #22 |
 | Logika emisi CO2e & dokumentasi metodologi AI | Selesai | #23, #24 |
+| Model forecasting volume setoran | Selesai | #25 |
 | ERD dan skema database | Selesai | #13 |
 | Dokumentasi proyek & panduan demo | Selesai | #8 |
 | Desain UI hi-fi | Berjalan | #10 |

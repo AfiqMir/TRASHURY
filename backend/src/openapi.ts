@@ -214,5 +214,35 @@ export const dokumenOpenApi = {
         },
       },
     },
+    '/laporan/bulanan': {
+      get: {
+        summary: 'Rekap bulanan untuk DLH, batas bulan dihitung dalam WIB',
+        security: bearer,
+        parameters: [
+          {
+            name: 'bulan',
+            in: 'query',
+            required: true,
+            schema: { type: 'string', pattern: '^\\d{4}-(0[1-9]|1[0-2])$', example: '2026-09' },
+          },
+          {
+            name: 'format',
+            in: 'query',
+            schema: { type: 'string', enum: ['json', 'csv', 'pdf'], default: 'json' },
+          },
+        ],
+        responses: {
+          200: {
+            description: 'Rekap bulanan dalam format yang diminta',
+            content: {
+              'application/json': {},
+              'text/csv': {},
+              'application/pdf': {},
+            },
+          },
+          400: galatResponse,
+        },
+      },
+    },
   },
 } as const;

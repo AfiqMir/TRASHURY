@@ -34,8 +34,9 @@ Alamat dan kata sandi dapat diubah lewat `SMOKE_API` dan `SMOKE_PASSWORD`.
 
 ## Isi pengujian
 
-`alur.sh` menjalankan 29 pemeriksaan sepanjang alur operator, mulai dari masuk,
-mengelola master data, mencatat setoran, hingga penarikan dan buku tabungan.
+`alur.sh` menjalankan 39 pemeriksaan sepanjang alur operator, mulai dari masuk,
+mengelola master data, mencatat setoran, penarikan dan buku tabungan, hingga
+rekap laporan bulanan beserta ekspor CSV dan PDF.
 
 `serentak.mjs` mengirim tiga penarikan sekaligus terhadap saldo yang hanya cukup
 untuk satu, lalu menuntut tepat satu berhasil dan saldo tidak pernah negatif.

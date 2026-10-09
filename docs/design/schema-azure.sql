@@ -130,7 +130,7 @@ CREATE OR REPLACE VIEW v_buku_tabungan AS
       FROM penarikan_saldo;
 
 CREATE OR REPLACE VIEW v_rekap_bulanan AS
-    SELECT to_char(t.tanggal, 'YYYY-MM') AS bulan,
+    SELECT to_char(t.tanggal AT TIME ZONE 'Asia/Jakarta', 'YYYY-MM') AS bulan,
            k.nama_kategori,
            SUM(d.berat_kg)               AS total_berat_kg,
            SUM(d.subtotal_harga)         AS total_nilai_rupiah,

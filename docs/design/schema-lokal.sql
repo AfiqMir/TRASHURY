@@ -116,7 +116,7 @@ CREATE VIEW IF NOT EXISTS v_buku_tabungan AS
       FROM penarikan_saldo;
 
 CREATE VIEW IF NOT EXISTS v_rekap_bulanan AS
-    SELECT substr(t.tanggal, 1, 7)      AS bulan,
+    SELECT substr(datetime(t.tanggal, '+7 hours'), 1, 7) AS bulan,
            k.nama_kategori,
            SUM(d.berat_kg)              AS total_berat_kg,
            SUM(d.subtotal_harga)        AS total_nilai_rupiah,

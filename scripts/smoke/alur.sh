@@ -127,5 +127,19 @@ r=$(panggil DELETE "/nasabah/$NAS" '' "$PENGURUS")
 periksa "hapus nasabah beriwayat ditolak" 409 "$(kode "$r")"
 
 echo
+echo "=== 8. Laporan bulanan ==="
+BULAN=$(TZ=Asia/Jakarta date +%Y-%m)
+r=$(panggil GET "/laporan/bulanan?bulan=$BULAN" '' "$TOKEN")
+periksa "rekap bulan berjalan tersedia" 200 "$(kode "$r")"
+periksa "bulan dihitung menurut WIB" Asia/Jakarta "$(ambil "$r" zona_waktu)"
+periksa "setoran bulan ini ikut terekap" 1 "$(badan "$r" | grep -c "\"nama_kategori\":\"Plastik $ACAK\"")"
+r=$(panggil GET "/laporan/bulanan?bulan=2026-13" '' "$TOKEN")
+periksa "bulan tidak sah ditolak" 400 "$(kode "$r")"
+jenis=$(curl -s -o /dev/null -w '%{content_type}' "$API/laporan/bulanan?bulan=$BULAN&format=csv" -H "Authorization: Bearer $TOKEN")
+periksa "ekspor CSV" "text/csv; charset=utf-8" "$jenis"
+kepala=$(curl -s "$API/laporan/bulanan?bulan=$BULAN&format=pdf" -H "Authorization: Bearer $TOKEN" | head -c 5)
+periksa "ekspor PDF" "%PDF-" "$kepala"
+
+echo
 printf 'RINGKASAN: %d lolos, %d gagal\n' "$lolos" "$gagal"
 [ "$gagal" -eq 0 ]

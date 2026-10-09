@@ -88,3 +88,10 @@ export const masuk = z.object({
   username: z.string().trim().min(1, 'Username wajib diisi.'),
   password: z.string().min(1, 'Kata sandi wajib diisi.'),
 });
+
+export const saringLaporan = z.object({
+  bulan: z
+    .string({ required_error: 'Bulan wajib diisi dalam bentuk YYYY-MM.' })
+    .regex(/^\d{4}-(0[1-9]|1[0-2])$/, 'Bulan harus berbentuk YYYY-MM.'),
+  format: z.enum(['json', 'csv', 'pdf']).default('json'),
+});

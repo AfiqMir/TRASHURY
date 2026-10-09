@@ -5,6 +5,7 @@ import { penanganGalat, rutaTidakDitemukan } from './middleware/penanganGalat.js
 import { butuhToken } from './middleware/autentikasi.js';
 import { ruteAuth } from './rute/auth.js';
 import { ruteKategori } from './rute/kategori.js';
+import { ruteLaporan } from './rute/laporan.js';
 import { ruteNasabah } from './rute/nasabah.js';
 import { rutePenarikan } from './rute/penarikan.js';
 import { ruteTransaksi } from './rute/transaksi.js';
@@ -33,6 +34,7 @@ export function buatAplikasi({ basis, jwtSecret, jwtTtlJam }: OpsiAplikasi): Exp
   api.use('/kategori-sampah', ruteKategori(basis));
   api.use('/transaksi', ruteTransaksi(basis));
   api.use('/penarikan', rutePenarikan(basis));
+  api.use('/laporan', ruteLaporan(basis));
 
   app.use('/api/v1', api);
   app.use(rutaTidakDitemukan);

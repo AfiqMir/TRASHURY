@@ -42,6 +42,7 @@ Tahap perancangan, kode aplikasi belum dimulai. Rincian per bidang ada di
 | [Skema database lokal](docs/design/schema-lokal.sql) | DDL SQLite untuk basis data di mesin operator |
 | [Skema database server](docs/design/schema-azure.sql) | DDL PostgreSQL untuk basis data terpusat di Azure |
 | [Kontrak API](docs/design/kontrak-api.md) | Spesifikasi endpoint, aturan validasi, dan bentuk galat |
+| [Metodologi AI](docs/metodologi-ai.md) | Sumber dataset, arsitektur EfficientNet & YOLOv8, evaluasi model, dan faktor CO2e |
 
 ## Menjalankan API
 
